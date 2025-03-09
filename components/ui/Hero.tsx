@@ -1,0 +1,325 @@
+"use client"
+
+import { useState, useEffect, useRef } from "react"
+import Image from "next/image"
+import { Button } from "@/components/ui/button"
+import { Sparkles, Star, Menu } from "lucide-react"
+import Link from "next/link"
+
+// Star animation component
+const FallingStars = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+
+    const ctx = canvas.getContext("2d")
+    if (!ctx) return
+
+    // Set canvas to full screen
+    const handleResize = () => {
+      canvas.width = window.innerWidth
+      canvas.height = window.innerHeight
+    }
+
+    window.addEventListener("resize", handleResize)
+    handleResize()
+
+    // Star properties
+    const stars: {
+      x: number
+      y: number
+      size: number
+      speed: number
+      opacity: number
+      tail: { x: number; y: number }[]
+    }[] = []
+
+    // Create stars
+    const createStars = () => {
+      const maxStars = Math.floor(window.innerWidth / 15) // Responsive number of stars
+
+      if (stars.length < maxStars && Math.random() < 0.05) {
+        const size = Math.random() * 2 + 1
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: 0,
+          size,
+          speed: Math.random() * 1 + 0.5,
+          opacity: Math.random() * 0.8 + 0.2,
+          tail: [],
+        })
+      }
+    }
+
+    // Draw stars
+    const drawStars = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+      stars.forEach((star, index) => {
+        // Update position
+        star.y += star.speed
+
+        // Store position for tail
+        star.tail.push({ x: star.x, y: star.y })
+        if (star.tail.length > 5) {
+          star.tail.shift()
+        }
+
+        // Draw tail
+        if (star.tail.length > 1) {
+          ctx.beginPath()
+          ctx.moveTo(star.tail[0].x, star.tail[0].y)
+
+          for (let i = 1; i < star.tail.length; i++) {
+            ctx.lineTo(star.tail[i].x, star.tail[i].y)
+          }
+
+          ctx.strokeStyle = `rgba(0, 255, 247, ${star.opacity * 0.5})`
+          ctx.lineWidth = star.size / 2
+          ctx.stroke()
+        }
+
+        // Draw star
+        ctx.beginPath()
+        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2)
+        ctx.fillStyle = `rgba(0, 255, 247, ${star.opacity})`
+        ctx.fill()
+
+        // Remove if off screen
+        if (star.y > canvas.height) {
+          stars.splice(index, 1)
+        }
+      })
+    }
+
+    // Animation loop
+    const animate = () => {
+      createStars()
+      drawStars()
+      requestAnimationFrame(animate)
+    }
+
+    animate()
+
+    return () => {
+      window.removeEventListener("resize", handleResize)
+    }
+  }, [])
+
+  return <canvas ref={canvasRef} className="fixed inset-0 pointer-events-none z-10" />
+}
+
+const MouseFollower = () => {
+  const [position, setPosition] = useState({ x: 0, y: 0 })
+
+  // Only enable mouse follower on devices with hover capability
+  const [hasHover, setHasHover] = useState(false)
+
+  useEffect(() => {
+    // Check if device has hover capability
+    setHasHover(window.matchMedia("(hover: hover)").matches)
+
+    const updatePosition = (e: MouseEvent) => {
+      setPosition({ x: e.clientX, y: e.clientY })
+    }
+
+    if (hasHover) {
+      window.addEventListener("mousemove", updatePosition)
+      return () => window.removeEventListener("mousemove", updatePosition)
+    }
+  }, [hasHover])
+
+  if (!hasHover) return null
+
+  return (
+    <>
+      <div
+        className="fixed w-8 h-8 rounded-full border-2 border-[#00fff7] pointer-events-none transition-all duration-100 ease-out z-50"
+        style={{
+          left: `${position.x}px`,
+          top: `${position.y}px`,
+          transform: "translate(-50%, -50%)",
+        }}
+      ></div>
+      <div
+        className="fixed w-2 h-2 bg-[#00fff7] rounded-full pointer-events-none transition-all duration-75 ease-out z-50"
+        style={{
+          left: `${position.x}px`,
+          top: `${position.y}px`,
+          transform: "translate(-50%, -50%)",
+        }}
+      ></div>
+    </>
+  )
+}
+
+export default function Hero() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  return (
+    <div className="min-h-screen bg-black overflow-hidden">
+      <FallingStars />
+      <MouseFollower />
+      {/* Navigation */}
+      <nav className="fixed top-5 left-1/2 transform -translate-x-1/2 z-50 bg-white px-4 sm:px-6 py-3 sm:py-4 rounded-full w-[90%] sm:w-[80%] md:w-[70%] max-w-5xl">
+        <div className="flex items-center justify-between">
+          {/* Mobile menu button */}
+          <button className="md:hidden text-black" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+            <Menu className="h-8 w-8 sm:h-6 sm:w-6" />
+          </button>
+
+          {/* Desktop left menu */}
+          <div className="hidden md:flex flex-1">
+            <div className="flex items-center gap-4 lg:gap-20">
+              <Link
+                href="#"
+                className="text-black hover:text-[#00fff7] text-lg font-extrabold transition-colors whitespace-nowrap"
+              >
+                About Us
+              </Link>
+              <Link
+                href="#"
+                className="text-black hover:text-[#00fff7] text-lg font-extrabold transition-colors whitespace-nowrap"
+              >
+                Services
+              </Link>
+            </div>
+          </div>
+
+          {/* Logo - centered on all devices */}
+          <Link
+            href="/"
+            className="flex items-center gap-2 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          >
+            <Sparkles className="h-7 w-7 sm:h-6 sm:w-6 text-[#00fff7]" />
+            <span className="text-black font-extrabold text-2xl sm:text-lg">AHIL</span>
+          </Link>
+
+          {/* Desktop right menu */}
+          <div className="hidden md:flex flex-1 justify-end">
+            <div className="flex items-center gap-4 lg:gap-20">
+              <Link
+                href="#"
+                className="text-black hover:text-[#00fff7] text-lg font-extrabold transition-colors whitespace-nowrap"
+              >
+                Projects
+              </Link>
+              <Link
+                href="#"
+                className="text-black hover:text-[#00fff7] text-lg font-extrabold transition-colors whitespace-nowrap"
+              >
+                Reviews
+              </Link>
+            </div>
+          </div>
+
+          {/* Empty div for spacing on mobile */}
+          <div className="w-7 md:hidden"></div>
+        </div>
+
+        {/* Mobile menu dropdown */}
+        {mobileMenuOpen && (
+          <div className="md:hidden absolute top-full left-0 right-0 mt-2 bg-black rounded-lg p-6 flex flex-col gap-6">
+            <Link href="#" className="text-white hover:text-[#00fff7] text-xl sm:text-sm font-bold transition-colors">
+              About Us
+            </Link>
+            <Link href="#" className="text-white hover:text-[#00fff7] text-xl sm:text-sm font-bold transition-colors">
+              Services
+            </Link>
+            <Link href="#" className="text-white hover:text-[#00fff7] text-xl sm:text-sm font-bold transition-colors">
+              Projects
+            </Link>
+            <Link href="#" className="text-white hover:text-[#00fff7] text-xl sm:text-sm font-bold transition-colors">
+              Reviews
+            </Link>
+          </div>
+        )}
+      </nav>
+
+      {/* Hero Section */}
+      <main className="pt-24 sm:pt-20 md:pt-28 px-8 sm:px-4">
+        <div className="mx-auto max-w-7xl relative">
+          {/* Decorative Elements - responsive positioning */}
+          <div className="absolute -left-2 sm:-left-4 top-10 sm:top-20">
+            <Sparkles className="h-12 w-12 sm:h-8 sm:w-8 text-[#00fff7]" />
+          </div>
+          <div className="absolute -right-2 sm:-right-4 top-20 sm:top-40">
+            <Sparkles className="h-12 w-12 sm:h-8 sm:w-8 text-[#00fff7]" />
+          </div>
+
+          <div className="text-center space-y-10 sm:space-y-6 relative">
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+              {/* Responsive sprinkle lines */}
+              <div className="absolute top-1/4 left-1/4 w-24 sm:w-16 md:w-32 h-px bg-gradient-to-r from-transparent via-[#00fff7] to-transparent transform rotate-45"></div>
+              <div className="absolute bottom-1/4 right-1/4 w-24 sm:w-16 md:w-32 h-px bg-gradient-to-r from-transparent via-[#00fff7] to-transparent transform -rotate-45"></div>
+
+              {/* Responsive stars */}
+              <Star className="absolute top-1/3 left-1/6 h-6 w-6 sm:h-4 sm:w-4 text-[#00eaff] animate-pulse" />
+              <Star
+                className="absolute bottom-1/3 right-1/6 h-5 w-5 sm:h-3 sm:w-3 text-[#00ffee] animate-pulse"
+                fill="#00fff7"
+              />
+
+              {/* Responsive floating circles */}
+              <div className="w-5 h-5 sm:w-3 sm:h-3 bg-[#00ffe1] rounded-full absolute animate-float1 top-1/4 left-1/3 opacity-50"></div>
+              <div className="w-4 h-4 sm:w-2 sm:h-2 bg-[#00fff7] rounded-full absolute animate-float2 left-1/4 top-3/4 opacity-50"></div>
+              <div className="w-3 h-3 sm:w-1 sm:h-1 bg-[#00fff7] rounded-full absolute animate-float3 right-1/4 bottom-1/4 opacity-50"></div>
+
+              {/* Responsive glowing orb */}
+              <div className="absolute top-[350px] sm:top-[270px] left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <div className="w-40 h-40 sm:w-24 sm:h-24 rounded-full bg-[#00fff7] opacity-10 animate-pulse"></div>
+                <div className="w-32 h-32 sm:w-16 sm:h-16 rounded-full bg-[#00fff7] opacity-20 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-pulse animation-delay-200"></div>
+              </div>
+            </div>
+            <h1 className="text-5xl sm:text-3xl md:text-5xl lg:text-6xl font-bold max-w-sm sm:max-w-xs md:max-w-2xl lg:max-w-3xl mx-auto leading-tight relative z-10 text-white">
+              Empowering Brands Through Creative Solutions
+            </h1>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-4 mt-10 sm:mt-6">
+              <Button
+                size="lg"
+                className="bg-[#ff8c00] text-black hover:bg-[#00fff7]/90 w-full sm:w-auto text-xl sm:text-base py-8 sm:py-2 px-8"
+              >
+                Get Started
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-gray-200 text-black w-full sm:w-auto mt-4 sm:mt-0 text-xl sm:text-base py-8 sm:py-2 px-8"
+              >
+                Learn More
+              </Button>
+            </div>
+
+            <div className="relative mt-16 sm:mt-18">
+              <div className="absolute -right-2 sm:-right-8 -top-8 sm:top-0 flex items-center gap-4 sm:gap-2 bg-white p-4 sm:p-2 rounded-lg shadow-lg">
+                <div className="flex gap-2 sm:gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Sparkles key={i} className="h-5 w-5 sm:h-3 sm:w-3 text-[#00fff7]" />
+                  ))}
+                </div>
+                <div className="text-lg sm:text-xs font-medium">50+ Project</div>
+              </div>
+
+              <div className="w-[320px] h-[320px] sm:w-[200px] sm:h-[200px] md:w-[300px] md:h-[300px] mx-auto relative right-[-6px] top-[-12px]">
+                <Image
+                  src="/Profile picture.png"
+                  alt="Happy boy"
+                  fill
+                  className="rounded-full object-cover"
+                  priority
+                  sizes="(max-width: 640px) 320px, (max-width: 768px) 200px, 300px"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  )
+}
+
+
+export { Hero }
