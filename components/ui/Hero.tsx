@@ -174,14 +174,14 @@ export default function Hero() {
           <div className="hidden md:flex flex-1">
             <div className="flex items-center gap-4 lg:gap-20">
               <Link
-                href="#"
-                className="text-black hover:text-[#00fff7] text-lg font-extrabold transition-colors whitespace-nowrap"
+                href=""
+                className="text-black hover:text-[#00fff7] text-md font-extrabold transition-colors whitespace-nowrap"
               >
                 About Us
               </Link>
               <Link
                 href="#"
-                className="text-black hover:text-[#00fff7] text-lg font-extrabold transition-colors whitespace-nowrap"
+                className="text-black hover:text-[#00fff7] text-md font-extrabold transition-colors whitespace-nowrap"
               >
                 Services
               </Link>
@@ -202,13 +202,13 @@ export default function Hero() {
             <div className="flex items-center gap-4 lg:gap-20">
               <Link
                 href="#"
-                className="text-black hover:text-[#00fff7] text-lg font-extrabold transition-colors whitespace-nowrap"
+                className="text-black hover:text-[#00fff7] text-md font-extrabold transition-colors whitespace-nowrap"
               >
                 Projects
               </Link>
               <Link
                 href="#"
-                className="text-black hover:text-[#00fff7] text-lg font-extrabold transition-colors whitespace-nowrap"
+                className="text-black hover:text-[#00fff7] text-md font-extrabold transition-colors whitespace-nowrap"
               >
                 Reviews
               </Link>

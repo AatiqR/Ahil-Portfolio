@@ -1,9 +1,11 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
   content: [
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
+    "./*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
     "*.{js,ts,jsx,tsx,mdx}",
   ],
@@ -23,7 +25,7 @@ module.exports = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#00fff7",
+          DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
@@ -57,25 +59,20 @@ module.exports = {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
-        float1: {
-          "0%, 100%": { transform: "translate(0, 0)" },
-          "50%": { transform: "translate(20px, -20px)" },
+        "accordion-down": {
+          from: { height: 0 },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
-        float2: {
-          "0%, 100%": { transform: "translate(0, 0)" },
-          "50%": { transform: "translate(-15px, 15px)" },
-        },
-        float3: {
-          "0%, 100%": { transform: "translate(0, 0)" },
-          "50%": { transform: "translate(10px, -10px)" },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: 0 },
         },
       },
       animation: {
-        float1: "float1 6s ease-in-out infinite",
-        float2: "float2 8s ease-in-out infinite",
-        float3: "float3 7s ease-in-out infinite",
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
-}
-
+  plugins: [require("tailwindcss-animate")],
+};
