@@ -32,7 +32,7 @@ export default function EcommerceLandingPage() {
             </h1>
 
             <p className="text-lg text-gray-600">
-              Build your own Ecommerce app just like "Amazon & Flipkart" Our app is a powerful tool to build your own
+              Build your own Ecommerce app just like Amazon & Flipkart Our app is a powerful tool to build your own
               Ecommerce platform.
             </p>
 

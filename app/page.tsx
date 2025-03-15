@@ -11,7 +11,7 @@ export default function Home() {
       <Webpro/>
       <Reviews/>
       <Faqs />
-      <Webpro/>
+    
 
     </div>
   )
