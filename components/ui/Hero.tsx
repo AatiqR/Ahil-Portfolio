@@ -5,6 +5,7 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Sparkles, Star, Menu } from "lucide-react"
 import Link from "next/link"
+import { motion } from "framer-motion";
 
 // Star animation component
 const FallingStars = () => {
@@ -155,8 +156,37 @@ const MouseFollower = () => {
   )
 }
 
+
+
+
 export default function Hero() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const words = [
+    "SEO-Optimized",
+    "Sales-Boosting",
+    "High-Converting",
+    "Revenue-Generating",
+    "Lead-Driving",
+    "Profit-Boosting",
+    "Conversion-Focused",
+    "Business-Growing",
+    "Customer-Attracting",
+    "Results-Driven",
+    "Brand-Enhancing",
+    "Market-Dominating",
+    "Performance-Optimized"
+  ];
+  
+
+
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % words.length);
+    }, 2000); // Change words every 2 seconds
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="min-h-screen bg-black overflow-hidden">
@@ -273,24 +303,79 @@ export default function Hero() {
                 <div className="w-32 h-32 sm:w-16 sm:h-16 rounded-full bg-[#00fff7] opacity-20 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-pulse animation-delay-200"></div>
               </div>
             </div>
+
             <h1 className="text-5xl sm:text-3xl md:text-5xl lg:text-6xl font-bold max-w-sm sm:max-w-xs md:max-w-2xl lg:max-w-3xl mx-auto leading-tight relative z-10 text-white">
-              Empowering Brands Through Creative Solutions
+      I Build{" "}
+      <motion.span
+        key={words[index]}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.5 }}
+        className="text-yellow-400"
+      >
+        {words[index]}
+      </motion.span>{" "}
+      Websites That Drive Business Growth.
+    </h1>
+            {/* <h1 className="text-5xl sm:text-3xl md:text-5xl lg:text-6xl font-bold max-w-sm sm:max-w-xs md:max-w-2xl lg:max-w-3xl mx-auto leading-tight relative z-10 text-white">
+            We Build Aesthetic 
+            Websites for Businesses.
             </h1>
+            import { motion } from "framer-motion";
+{/*  */}
+{/* <motion.h1
+  initial={{ opacity: 0, y: 50 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, ease: "easeOut" }}
+  className="text-5xl sm:text-3xl md:text-5xl lg:text-6xl font-bold max-w-sm sm:max-w-xs md:max-w-2xl lg:max-w-3xl mx-auto leading-tight relative z-10 text-white"
+>
+  <span className="text-yellow-400">High-Converting</span> Websites  
+  That <span className="text-green-400">Drive Sales</span> &  
+  Rank <span className="text-blue-400">#1 on Google</span>.
+</motion.h1> */} */}
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-4 mt-10 sm:mt-6">
+            <Button
+  size="lg"
+  className="relative w-full sm:w-auto text-xl sm:text-base py-8 sm:py-2 px-8 text-white bg-[#ff8c00] border-none rounded-lg shadow-lg transition-all duration-300 ease-in-out hover:shadow-xl hover:bg-[#ff7b00] active:translate-y-1 flex items-center gap-3"
+  onClick={() => window.location.href = 'mailto:aatiq9527@email.com'}
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    className="w-7 h-7"  // Increased icon size
+  >
+    <path
+      d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm16 2-8 5-8-5v12h16zm-8 4 8-5H4z"
+    />
+  </svg>
+  <span>Email Now</span>
+</Button>
+
               <Button
-                size="lg"
-                className="bg-[#ff8c00] text-black hover:bg-[#00fff7]/90 w-full sm:w-auto text-xl sm:text-base py-8 sm:py-2 px-8"
-              >
-                Get Started
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-gray-200 text-black w-full sm:w-auto mt-4 sm:mt-0 text-xl sm:text-base py-8 sm:py-2 px-8"
-              >
-                Learn More
-              </Button>
+  size="lg"
+  variant="outline"
+  className="relative w-full sm:w-auto mt-4 sm:mt-0 text-xl sm:text-base py-8 sm:py-2 px-8 text-white bg-green-500 border-none rounded-lg shadow-lg transition-all duration-300 ease-in-out hover:shadow-xl hover:bg-green-600 active:translate-y-1 flex items-center gap-3"
+  onClick={() => window.open('https://wa.me/+9203432357017', '_blank')}
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    className="w-17 h-17"  // Increased icon size
+  >
+    <path
+      fillRule="evenodd"
+      d="M12 2a10 10 0 0 0-8.464 15.51L2 22l4.49-1.535A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-6.829-12.2l.383-.6-.57-.822A8.003 8.003 0 1 1 20 12a8.001 8.001 0 0 1-8 8zm-1.07-5.646c1.225.746 2.163 1.16 2.834 1.24.56.067 1.007-.073 1.42-.414.302-.256.74-.805.916-1.108.169-.288.14-.518.01-.704-.104-.151-.24-.204-.394-.285-.154-.081-.985-.485-1.14-.544s-.265-.081-.375.082c-.112.163-.433.545-.53.662-.096.118-.194.133-.35.046-.292-.16-.961-.354-1.835-1.124-.68-.583-1.14-1.304-1.34-1.607-.09-.135-.009-.254.07-.34.073-.08.163-.186.244-.28.08-.094.107-.148.162-.24.056-.09.03-.165-.004-.232-.035-.066-.32-.77-.438-1.058-.114-.282-.228-.237-.316-.237-.086 0-.186-.012-.285-.007s-.267.038-.406.176c-.14.139-.55.536-.55 1.31 0 .773.562 1.52.64 1.63.079.11 1.104 1.71 2.678 2.605z"
+      clipRule="evenodd"
+    />
+  </svg>
+  <span>WhatsApp Now</span>
+</Button>
+
+
             </div>
 
             <div className="relative mt-16 sm:mt-18">
