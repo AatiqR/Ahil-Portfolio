@@ -1,9 +1,10 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, useCallback } from "react"
 import { cn } from "@/lib/utils"
 import { motion } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "lucide-react"
+import Image from "next/image"
 
 interface WebsiteDesign {
   id: number
@@ -42,7 +43,7 @@ export default function WebsiteShowcaseSlider() {
       id: 2,
       title: "Food Delivery App",
       category: "Food & Beverage",
-      image: "/Assets/Pro1.png"
+      image: "/Assets/Pro1.png",
     },
     {
       id: 3,
@@ -104,39 +105,42 @@ export default function WebsiteShowcaseSlider() {
     return 25 // lg and xl default
   }
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     if (isAnimating) return
     setIsAnimating(true)
     setActiveIndex((prev) => (prev === 0 ? websites.length - 1 : prev - 1))
     setTimeout(() => setIsAnimating(false), 500)
-  }
+  }, [isAnimating, websites.length])
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     if (isAnimating) return
     setIsAnimating(true)
     setActiveIndex((prev) => (prev === websites.length - 1 ? 0 : prev + 1))
     setTimeout(() => setIsAnimating(false), 500)
-  }
+  }, [isAnimating, websites.length])
 
-  const handleKeyDown = (e: KeyboardEvent) => {
-    if (e.key === "ArrowLeft") {
-      handlePrev()
-    } else if (e.key === "ArrowRight") {
-      handleNext()
-    }
-  }
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") {
+        handlePrev()
+      } else if (e.key === "ArrowRight") {
+        handleNext()
+      }
+    },
+    [handlePrev, handleNext],
+  )
 
   // Handle touch events for swipe
-  const handleTouchStart = (e: TouchEvent) => {
+  const handleTouchStart = useCallback((e: TouchEvent) => {
     touchStartX.current = e.touches[0].clientX
     touchEndX.current = null
-  }
+  }, [])
 
-  const handleTouchMove = (e: TouchEvent) => {
+  const handleTouchMove = useCallback((e: TouchEvent) => {
     touchEndX.current = e.touches[0].clientX
-  }
+  }, [])
 
-  const handleTouchEnd = () => {
+  const handleTouchEnd = useCallback(() => {
     if (!touchStartX.current || !touchEndX.current) return
 
     const diffX = touchStartX.current - touchEndX.current
@@ -155,7 +159,7 @@ export default function WebsiteShowcaseSlider() {
     // Reset touch coordinates
     touchStartX.current = null
     touchEndX.current = null
-  }
+  }, [handleNext, handlePrev])
 
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown)
@@ -176,7 +180,7 @@ export default function WebsiteShowcaseSlider() {
         sliderElement.removeEventListener("touchend", handleTouchEnd)
       }
     }
-  }, [])
+  }, [handleKeyDown, handleTouchStart, handleTouchMove, handleTouchEnd])
 
   // Animation variants for text
   const titleVariants = {
@@ -196,7 +200,7 @@ export default function WebsiteShowcaseSlider() {
   const offsetPercentage = getOffsetPercentage()
 
   return (
-    <div className="relative w-full overflow-hidden bg-black py-8 sm:py-12 md:py-16 px-2 sm:px-4 min-h-[500px] sm:min-h-[600px] md:min-h-[700px] flex items-center justify-center"  >
+    <div className="relative w-full overflow-hidden bg-black py-8 sm:py-12 md:py-16 px-2 sm:px-4 min-h-[500px] sm:min-h-[600px] md:min-h-[700px] flex items-center justify-center">
       <div className="max-w-7xl mx-auto w-full z-10">
         {/* Simple title */}
         <motion.div
@@ -209,7 +213,7 @@ export default function WebsiteShowcaseSlider() {
             Recent Projects
           </h2>
           <p className="text-gray-300 max-w-xs sm:max-w-sm md:max-w-lg lg:max-w-2xl mx-auto text-sm sm:text-base md:text-lg lg:text-xl px-2 sm:px-4">
-            Explore how we've helped businesses like yours grow through a perfect website.
+            Explore how we&apos;ve helped businesses like yours grow through a perfect website.
           </p>
         </motion.div>
 
@@ -264,11 +268,13 @@ export default function WebsiteShowcaseSlider() {
                   }}
                 >
                   <div className="h-full w-full relative">
-                    <img
+                    <Image
                       src={website.image || "/placeholder.svg"}
                       alt={`${website.title} design`}
-                      className="object-cover w-full h-full"
-                      draggable="false"
+                      className="object-cover"
+                      fill
+                      sizes={`(max-width: 480px) 270px, (max-width: 640px) 290px, (max-width: 768px) 320px, (max-width: 1024px) 380px, 420px`}
+                      priority={normalizedPosition === 0}
                     />
 
                     {normalizedPosition === 0 && (
