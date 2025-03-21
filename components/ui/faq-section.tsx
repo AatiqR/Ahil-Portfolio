@@ -25,7 +25,7 @@ export default function FAQSection() {
 
           <AccordionItem value="item-3" className="border-0">
             <AccordionTrigger className="bg-[#111] rounded-lg px-6 py-4 text-white text-left hover:no-underline hover:bg-[#181818] transition-colors">
-              <span className="text-lg">What if I'm not satisfied with the outcome?</span>
+              <span className="text-lg">What if I m not satisfied with the outcome?</span>
             </AccordionTrigger>
             <AccordionContent className="px-6 py-4 text-gray-300">Content for this answer goes here.</AccordionContent>
           </AccordionItem>
