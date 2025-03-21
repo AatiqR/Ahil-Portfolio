@@ -21,7 +21,7 @@ export default function ServiceCards() {
             <h2 className="text-2xl font-bold mb-1">Custom Websites</h2>
             <div className="text-3xl font-bold text-green-500 mb-4">$997</div>
 
-            <h3 className="text-lg font-semibold mb-4">What's included?</h3>
+            <h3 className="text-lg font-semibold mb-4">Whats included?</h3>
 
             <ul className="space-y-2 mb-6 text-sm">
               <li className="flex items-start">
@@ -65,7 +65,7 @@ export default function ServiceCards() {
             <h2 className="text-2xl font-bold mb-1">Website Redesign</h2>
             <div className="text-3xl font-bold text-green-400 mb-4">$1487</div>
 
-            <h3 className="text-lg font-semibold mb-4">What's included?</h3>
+            <h3 className="text-lg font-semibold mb-4">Whats included?</h3>
 
             <ul className="space-y-2 mb-6 text-sm">
               <li className="flex items-start">
@@ -106,7 +106,7 @@ export default function ServiceCards() {
             <h2 className="text-2xl font-bold mb-1">Portfolio Websites</h2>
             <div className="text-3xl font-bold text-green-400 mb-4">$1987</div>
 
-            <h3 className="text-lg font-semibold mb-4">What's included?</h3>
+            <h3 className="text-lg font-semibold mb-4">Whats included?</h3>
 
             <ul className="space-y-2 mb-6 text-sm">
               <li className="flex items-start">
@@ -150,7 +150,7 @@ export default function ServiceCards() {
             <h2 className="text-2xl font-bold mb-1">E-commerce</h2>
             <div className="text-3xl font-bold text-green-400 mb-4">$2497</div>
 
-            <h3 className="text-lg font-semibold mb-4">What's included?</h3>
+            <h3 className="text-lg font-semibold mb-4">Whats included?</h3>
 
             <ul className="space-y-2 mb-6 text-sm">
               <li className="flex items-start">

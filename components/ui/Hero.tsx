@@ -157,8 +157,6 @@ const MouseFollower = () => {
 }
 
 
-
-
 export default function Hero() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const words = [
@@ -318,22 +316,7 @@ export default function Hero() {
       </motion.span>{" "}
       Websites That Drive Business Growth.
     </h1>
-            {/* <h1 className="text-5xl sm:text-3xl md:text-5xl lg:text-6xl font-bold max-w-sm sm:max-w-xs md:max-w-2xl lg:max-w-3xl mx-auto leading-tight relative z-10 text-white">
-            We Build Aesthetic 
-            Websites for Businesses.
-            </h1>
-            import { motion } from "framer-motion";
-{/*  */}
-{/* <motion.h1
-  initial={{ opacity: 0, y: 50 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.8, ease: "easeOut" }}
-  className="text-5xl sm:text-3xl md:text-5xl lg:text-6xl font-bold max-w-sm sm:max-w-xs md:max-w-2xl lg:max-w-3xl mx-auto leading-tight relative z-10 text-white"
->
-  <span className="text-yellow-400">High-Converting</span> Websites  
-  That <span className="text-green-400">Drive Sales</span> &  
-  Rank <span className="text-blue-400">#1 on Google</span>.
-</motion.h1> */} */}
+
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-4 mt-10 sm:mt-6">
             <Button

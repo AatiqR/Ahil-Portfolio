@@ -16,7 +16,7 @@ export default function FeaturesSection() {
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 tracking-tight">
             <span className="text-[#38d86f] drop-shadow-[0_0_8px_rgba(56,216,111,0.6)]">Benefits</span>
           </h2>
-          <p className="text-xl md:text-2xl text-gray-300">We run behind results</p>
+          <p className="text-4xl md:text-2xl text-[#00ff59] drop-shadow-[0_0_8px_rgba(56,216,111,0.6)]">Why Choose me</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-16 gap-y-24">
@@ -53,9 +53,9 @@ export default function FeaturesSection() {
                 strokeWidth={1.25}
               />
             </div>
-            <h3 className="text-2xl font-bold mb-3">Custom Solutions</h3>
+            <h3 className="text-2xl font-bold mb-3"> Expert in High-Converting Websites</h3>
             <p className="text-base text-gray-300 leading-relaxed">
-              Tailor-made frontend solutions to match your unique requirements.
+            With 50+ projects and 2+ years of experience, I craft websites that look great & drive results—boosting engagement, speed, and conversions.
             </p>
           </div>
 
