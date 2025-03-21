@@ -169,7 +169,7 @@ export default function Footer() {
 }
 
 // Enhanced Footer Link Component
-function FooterLink({ href, text }) {
+function FooterLink({ href, text }: { href: string; text: string }) {
   return (
     <div className="list-none">
       <Link
