@@ -184,12 +184,15 @@ function FooterLink({ href, text }: { href: string; text: string }) {
 }
 
 // Enhanced Social Icon Component
-function SocialIcon({ icon, name }) {
+function SocialIcon({ icon: Icon, name = "Social Icon" }: any){
   return (
     <Link href="#" className="relative group" aria-label={name}>
       <div className="absolute inset-0 bg-[#4AE54A] rounded-lg blur opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
       <div className="relative w-10 h-10 rounded-full bg-black/40 border border-gray-800 group-hover:border-[#4AE54A] flex items-center justify-center transition-all duration-300 shadow-lg transform group-hover:translate-y-[-2px]">
-        <span className="text-gray-400 group-hover:text-[#4AE54A] transition-colors duration-300">{icon}</span>
+      <span className="text-gray-400 group-hover:text-[#4AE54A] transition-colors duration-300">
+  <Icon className="w-6 h-6" />
+</span>
+
       </div>
     </Link>
   )

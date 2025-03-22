@@ -184,7 +184,7 @@ export default function Hero() {
       setIndex((prev) => (prev + 1) % words.length);
     }, 2000); // Change words every 2 seconds
     return () => clearInterval(interval);
-  }, []);
+  }, [words.length]);
 
   return (
     <div className="min-h-screen bg-black overflow-hidden">
