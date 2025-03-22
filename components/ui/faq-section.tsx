@@ -11,7 +11,7 @@ export default function FAQSection() {
         <Accordion type="single" collapsible className="space-y-4">
           <AccordionItem value="item-1" className="border-0">
             <AccordionTrigger className="bg-[#111] rounded-lg px-6 py-4 text-white text-left hover:no-underline hover:bg-[#181818] transition-colors">
-              <span className="text-lg">Who behind Uniodessy?</span>
+              <span className="text-lg">Who behind Ahil?</span>
             </AccordionTrigger>
             <AccordionContent className="px-6 py-4 text-gray-300">Content for this answer goes here.</AccordionContent>
           </AccordionItem>

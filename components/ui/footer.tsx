@@ -45,7 +45,7 @@ export default function Footer() {
               <div className="w-12 h-12 bg-[#4AE54A] rounded-md flex items-center justify-center mr-3 shadow-[0_0_15px_rgba(74,229,74,0.5)]">
                 <span className="text-black font-bold text-2xl">U</span>
               </div>
-              <h3 className="text-white text-2xl font-bold">Uniodessy</h3>
+              <h3 className="text-white text-2xl font-bold">Ahil</h3>
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed">
               We deliver enterprise-grade solutions that transform businesses through innovative technology and
@@ -126,7 +126,7 @@ export default function Footer() {
                   <Mail className="text-[#4AE54A] w-4 h-4" />
                 </div>
                 <span className="text-gray-300 group-hover:text-white transition-colors duration-300">
-                  info@uniodessy.com
+                  info@Ahil.com
                 </span>
               </div>
               <div className="flex items-center p-2 rounded-lg bg-black/30 border border-gray-800/50 transition-all duration-300 hover:border-[#4AE54A]/50 hover:bg-black/50 group">
@@ -144,7 +144,7 @@ export default function Footer() {
         {/* Bottom footer - Enhanced */}
         <div className="border-t border-gray-800/50 pt-6 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm mb-4 md:mb-0">
-            © {new Date().getFullYear()} <span className="text-[#4AE54A]">Uniodessy</span>. All rights reserved.
+            © {new Date().getFullYear()} <span className="text-[#4AE54A]">Ahil</span>. All rights reserved.
           </p>
           <div className="flex items-center space-x-6">
             <Link href="#" className="text-gray-400 hover:text-white text-sm transition-colors flex items-center group">
