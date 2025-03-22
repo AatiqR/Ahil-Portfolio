@@ -1,21 +1,17 @@
 "use client"
 
+import type React from "react"
+
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import {
-  Mail,
-  Phone,
-  MapPin,
-  ArrowRight,
-  CheckCircle,
-  Linkedin,
-  Twitter,
-  Facebook,
-  Instagram,
-  Github,
-  Youtube,
-  ChevronRight,
-} from "lucide-react"
+import { FaLinkedin, FaTwitter, FaFacebook, FaInstagram } from "react-icons/fa"
+import { Mail, Phone, MapPin, ArrowRight, CheckCircle, ChevronRight } from "lucide-react"
+
+// Define the props for the SocialIcon component
+interface SocialIconProps {
+  icon: React.ComponentType<React.SVGAttributes<SVGElement>>
+  name?: string
+}
 
 export default function Footer() {
   const [isVisible, setIsVisible] = useState(false)
@@ -78,12 +74,10 @@ export default function Footer() {
 
             {/* Enhanced social icons */}
             <div className="flex flex-wrap gap-3 mb-2">
-              <SocialIcon icon={<Linkedin size={18} />} name="LinkedIn" />
-              <SocialIcon icon={<Twitter size={18} />} name="Twitter" />
-              <SocialIcon icon={<Facebook size={18} />} name="Facebook" />
-              <SocialIcon icon={<Instagram size={18} />} name="Instagram" />
-              <SocialIcon icon={<Github size={18} />} name="GitHub" />
-              <SocialIcon icon={<Youtube size={18} />} name="YouTube" />
+              <SocialIcon icon={FaLinkedin} name="LinkedIn" />
+              <SocialIcon icon={FaTwitter} name="Twitter" />
+              <SocialIcon icon={FaFacebook} name="Facebook" />
+              <SocialIcon icon={FaInstagram} name="Instagram" />
             </div>
           </div>
 
@@ -184,15 +178,14 @@ function FooterLink({ href, text }: { href: string; text: string }) {
 }
 
 // Enhanced Social Icon Component
-function SocialIcon({ icon: Icon, name = "Social Icon" }: any){
+function SocialIcon({ icon: Icon, name = "Social Icon" }: SocialIconProps) {
   return (
     <Link href="#" className="relative group" aria-label={name}>
       <div className="absolute inset-0 bg-[#4AE54A] rounded-lg blur opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
       <div className="relative w-10 h-10 rounded-full bg-black/40 border border-gray-800 group-hover:border-[#4AE54A] flex items-center justify-center transition-all duration-300 shadow-lg transform group-hover:translate-y-[-2px]">
-      <span className="text-gray-400 group-hover:text-[#4AE54A] transition-colors duration-300">
-  <Icon className="w-6 h-6" />
-</span>
-
+        <span className="text-gray-400 group-hover:text-[#4AE54A] transition-colors duration-300">
+          <Icon className="w-6 h-6" />
+        </span>
       </div>
     </Link>
   )
