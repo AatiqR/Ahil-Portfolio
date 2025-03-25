@@ -43,13 +43,12 @@ export default function Footer() {
           <div className="lg:col-span-5 bg-gradient-to-br from-black/60 to-[#0c1f0c]/30 p-6 rounded-xl border border-gray-800/50 shadow-xl backdrop-blur-sm">
             <div className="flex items-center mb-5">
               <div className="w-12 h-12 bg-[#4AE54A] rounded-md flex items-center justify-center mr-3 shadow-[0_0_15px_rgba(74,229,74,0.5)]">
-                <span className="text-black font-bold text-2xl">U</span>
+                <span className="text-black font-bold text-4xl">A</span>
               </div>
               <h3 className="text-white text-2xl font-bold">Ahil</h3>
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              We deliver enterprise-grade solutions that transform businesses through innovative technology and
-              strategic expertise.
+            Strategically crafted websites with persuasive copy and seamless development—designed to convert visitors into loyal customers. Helping brands worldwide maximize growth, boost sales, and create lasting impact
             </p>
 
             {/* Certifications with enhanced styling */}
@@ -59,7 +58,7 @@ export default function Footer() {
                   <CheckCircle className="text-[#4AE54A] w-4 h-4" />
                 </div>
                 <span className="text-white text-sm group-hover:text-[#4AE54A] transition-colors duration-300">
-                  ISO 27001 Certified
+                 50+ Projects Completed
                 </span>
               </div>
               <div className="flex items-center p-2 rounded-lg bg-black/30 border border-gray-800/50 transition-all duration-300 hover:border-[#4AE54A]/50 hover:bg-black/50 group">
@@ -67,7 +66,15 @@ export default function Footer() {
                   <CheckCircle className="text-[#4AE54A] w-4 h-4" />
                 </div>
                 <span className="text-white text-sm group-hover:text-[#4AE54A] transition-colors duration-300">
-                  GDPR Compliant
+                  100% Satisfaction Rate 
+                </span>
+              </div>
+              <div className="flex items-center p-2 rounded-lg bg-black/30 border border-gray-800/50 transition-all duration-300 hover:border-[#4AE54A]/50 hover:bg-black/50 group">
+                <div className="w-8 h-8 rounded-full bg-black/40 border border-gray-800 flex items-center justify-center mr-3 group-hover:border-[#4AE54A]/70 transition-all duration-300">
+                  <CheckCircle className="text-[#4AE54A] w-4 h-4" />
+                </div>
+                <span className="text-white text-sm group-hover:text-[#4AE54A] transition-colors duration-300">
+                100% Money-Back Guaranteed
                 </span>
               </div>
             </div>
@@ -87,12 +94,11 @@ export default function Footer() {
               <span className="text-[#4AE54A]">Our</span> Services
             </h3>
             <div className="space-y-3">
-              <FooterLink href="#" text="Enterprise Solutions" />
-              <FooterLink href="#" text="Digital Transformation" />
-              <FooterLink href="#" text="Cloud Infrastructure" />
-              <FooterLink href="#" text="Data Analytics" />
-              <FooterLink href="#" text="Cybersecurity" />
-              <FooterLink href="#" text="AI & Machine Learning" />
+              <FooterLink href="#" text="Custom Website" />
+              <FooterLink href="#" text="Portfolio Website" />
+              <FooterLink href="#" text="Redesign Website" />
+              <FooterLink href="#" text="Business Website" />
+              <FooterLink href="#" text="E-commerce Website" />
             </div>
           </div>
 
@@ -118,7 +124,7 @@ export default function Footer() {
                   <Phone className="text-[#4AE54A] w-4 h-4" />
                 </div>
                 <span className="text-gray-300 group-hover:text-white transition-colors duration-300">
-                  +1 (555) 123-4567
+                  +92 03432357017
                 </span>
               </div>
               <div className="flex items-center p-2 rounded-lg bg-black/30 border border-gray-800/50 transition-all duration-300 hover:border-[#4AE54A]/50 hover:bg-black/50 group">
@@ -126,7 +132,7 @@ export default function Footer() {
                   <Mail className="text-[#4AE54A] w-4 h-4" />
                 </div>
                 <span className="text-gray-300 group-hover:text-white transition-colors duration-300">
-                  info@Ahil.com
+                 ahilr9527@gmail.com
                 </span>
               </div>
               <div className="flex items-center p-2 rounded-lg bg-black/30 border border-gray-800/50 transition-all duration-300 hover:border-[#4AE54A]/50 hover:bg-black/50 group">
@@ -134,7 +140,7 @@ export default function Footer() {
                   <MapPin className="text-[#4AE54A] w-4 h-4" />
                 </div>
                 <span className="text-gray-300 group-hover:text-white transition-colors duration-300">
-                  123 Innovation Street, Tech City
+                 Karachi Pakistan
                 </span>
               </div>
             </div>

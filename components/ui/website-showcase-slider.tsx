@@ -32,50 +32,78 @@ const useMediaQuery = (query: string) => {
 }
 
 export default function WebsiteShowcaseSlider() {
-  const websites: WebsiteDesign[] = [
+  const websites: WebsiteDesign[] = 
+  [
     {
-      id: 1,
-      title: "E-Commerce Platform",
-      category: "Shopping",
-      image: "/Assets/Pro1.png",
+        "id": 8,
+        "title": "Muse Interiors & Home Styling Website",
+        "category": "Interior Design",
+        "image": "/Assets/slider/interior.png"
+    },
+
+    {
+        "id": 10,
+        "title": "Al Mustafa IT Academy Website",
+        "category": "Education & Learning",
+        "image": "/Assets/slider/almustafa.png"
     },
     {
-      id: 2,
-      title: "Food Delivery App",
-      category: "Food & Beverage",
-      image: "/Assets/Pro1.png",
+      "id": 3,
+      "title": "Dessert Contracting – Home Renovation Website",
+      "category": "Construction & Renovation",
+      "image": "/Assets/slider/contracting.png"
+  },
+    {
+        "id": 1,
+        "title": "GigaFit – Ultimate Gym & Fitness Website",
+        "category": "Health & Fitness",
+        "image": "/Assets/slider/gym.png"
     },
     {
-      id: 3,
-      title: "Finance Dashboard",
-      category: "Finance",
-      image: "/Assets/pro2.png",
+      "id": 6,
+      "title": "Oliver – Creative Portfolio Website",
+      "category": "Personal Branding & Portfolio",
+      "image": "/Assets/slider/portfolio.jpg"
+  },
+  {
+      "id": 11,
+      "title": "Premium Dog Care & Training Website",
+      "category": "Pet Services",
+      "image": "/Assets/slider/dogcare.png"
+  },
+  {
+      "id": 2,
+      "title": "Donut Media – Digital Marketing Agency Website",
+      "category": "Marketing & Advertising",
+      "image": "/Assets/slider/marketing.png"
+  },
+    {
+      "id": 7,
+      "title": "Adam Care Technical Solutions Website",
+      "category": "Technical & Maintenance Services",
+      "image": "/Assets/slider/service.png"
+  },
+    {
+        "id": 9,
+        "title": "Modern Book Store & Reading Hub Website",
+        "category": "Books & Literature",
+        "image": "/Assets/slider/book.png"
     },
     {
-      id: 4,
-      title: "Healthcare Portal",
-      category: "Healthcare",
-      image: "/Assets/pro3.png",
+        "id": 4,
+        "title": "Dog Venture – Advanced Dog Training Website",
+        "category": "Pet Training Services",
+        "image": "/Assets/slider/Dog.png"
     },
     {
-      id: 5,
-      title: "Utility Services",
-      category: "Utilities",
-      image: "/Assets/pro4.png",
+        "id": 5,
+        "title": "Professional Waterproofing Solutions Website",
+        "category": "Home & Building Maintenance",
+        "image": "/Assets/slider/waterproofing.png"
     },
-    {
-      id: 6,
-      title: "Social Media App",
-      category: "Social",
-      image: "/Assets/pro5.png",
-    },
-    {
-      id: 7,
-      title: "Travel Booking",
-      category: "Travel",
-      image: "/Assets/pro2.png",
-    },
-  ]
+
+]
+
 
   const [activeIndex, setActiveIndex] = useState(3)
   const [isAnimating, setIsAnimating] = useState(false)
