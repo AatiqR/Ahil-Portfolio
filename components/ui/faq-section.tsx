@@ -48,9 +48,9 @@ export default function FAQSection() {
 
           <AccordionItem value="item-5" className="border-0">
             <AccordionTrigger className="bg-[#111] rounded-lg px-6 py-4 text-white text-left hover:no-underline hover:bg-[#181818] transition-colors">
-              <span className="text-lg">What if I'm not satisfied?</span>
+              <span className="text-lg">What if I am not satisfied?</span>
             </AccordionTrigger>
-            <AccordionContent className="px-6 py-4  text-white">We offer a 100% Money-Back Guarantee if you're not happy with the final product.</AccordionContent>
+            <AccordionContent className="px-6 py-4  text-white">We offer a 100% Money-Back Guarantee if you are not happy with the final product.</AccordionContent>
           </AccordionItem>
 
           
