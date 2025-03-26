@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
 
-export default function HeroSection() {
+export function HeroSection() {
   const phrases = [
     "visitors into paying customers.",
     "visitors into buyers instantly!",
@@ -74,8 +74,8 @@ export default function HeroSection() {
         variants={itemVariants}
         className="text-neutral-300 max-w-3xl mt-6 sm:mt-8 md:mt-10 text-base sm:text-lg"
       >
-      High-converting websites with strategic copy and seamless development attract ready-to-buy customers,
-       turning visitors into loyal clients and driving global growth—fast.
+        High-converting websites designed with strategic copy and seamless development to attract ready-to-buy
+        customers—helping brands worldwide turn visitors into loyal clients and drive growth.
       </motion.p>
 
       <motion.div

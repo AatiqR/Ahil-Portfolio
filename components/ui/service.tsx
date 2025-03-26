@@ -14,12 +14,12 @@ export default function ServiceCards() {
           </p>
         </div>
 
-        Service Cards
+        {/* Service Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
           {/* Custom Websites */}
           <div className="border border-gray-800 rounded-xl p-5">
-            <h2 className="text-2xl font-bold mb-1">Custom Websites</h2>
-            <div className="text-3xl font-bold text-green-500 mb-4">$997</div>
+            <h2 className="text-2xl font-bold mb-1  text-green-500">Custom Websites</h2>
+            <div className="text-sm font-bold text-white mb-4">Get a website that’s uniquely designed to fit your brand.</div>
 
             <h3 className="text-lg font-semibold mb-4">Whats included?</h3>
 
@@ -34,11 +34,11 @@ export default function ServiceCards() {
               </li>
               <li className="flex items-start">
                 <Check className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                <span>Fast Delivery (14 Days)</span>
+                <span>Fast Delivery (4 Days)</span>
               </li>
               <li className="flex items-start">
                 <Check className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                <span>1 Round of Revisions</span>
+                <span>5 Round of Revisions</span>
               </li>
               <li className="flex items-start">
                 <Check className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
@@ -54,16 +54,17 @@ export default function ServiceCards() {
 
             <Button
               variant="outline"
-              className="w-full rounded-full border-gray-700 text-white hover:bg-gray-800 text-sm py-1.5"
+              className="w-full rounded-full border-green-500 text-white hover:bg-gray-800 text-sm py-1.5"
             >
               Secure Your March Spot
             </Button>
           </div>
+  
 
           {/* Website Redesign */}
           <div className="border border-gray-800 rounded-xl p-5">
-            <h2 className="text-2xl font-bold mb-1">Website Redesign</h2>
-            <div className="text-3xl font-bold text-green-400 mb-4">$1487</div>
+            <h2 className="text-2xl font-bold mb-1  text-green-400">Website Redesign</h2>
+            <div className="text-sm font-bold text-white mb-4"> Transform your outdated site into a modern, high-performing website.</div>
 
             <h3 className="text-lg font-semibold mb-4">Whats included?</h3>
 
@@ -103,8 +104,8 @@ export default function ServiceCards() {
 
           {/* Portfolio Websites */}
           <div className="border border-gray-800 rounded-xl p-5">
-            <h2 className="text-2xl font-bold mb-1">Portfolio Websites</h2>
-            <div className="text-3xl font-bold text-green-400 mb-4">$1987</div>
+            <h2 className="text-2xl text-green-500 font-bold mb-1">Portfolio Websites</h2>
+            <div className="text-sm font-bold text-white mb-4">Showcase your work with a visually stunning portfolio site.</div>
 
             <h3 className="text-lg font-semibold mb-4">Whats included?</h3>
 
@@ -139,7 +140,7 @@ export default function ServiceCards() {
 
             <Button
               variant="outline"
-              className="w-full rounded-full border-gray-700 text-white hover:bg-gray-800 text-sm py-1.5"
+              className="w-full rounded-full bg-green-500 hover:bg-green-600 text-white text-sm py-1.5"
             >
               Secure Your March Spot
             </Button>
@@ -187,7 +188,7 @@ export default function ServiceCards() {
 
             <Button
               variant="outline"
-              className="w-full rounded-full border-gray-700 text-white hover:bg-gray-800 text-sm py-1.5"
+            className="w-full rounded-full bg-green-500 hover:bg-green-600 text-white text-sm py-1.5"
             >
               Secure Your March Spot
             </Button>
