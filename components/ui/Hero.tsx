@@ -355,7 +355,7 @@ export default function Hero() {
       clipRule="evenodd"
     />
   </svg>
-  <span>WhatsApp Now</span>
+  <span>Get a Free Website Audit Now.</span>
 </Button>
 
 
