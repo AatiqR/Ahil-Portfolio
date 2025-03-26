@@ -1,138 +1,55 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { Sparkles, Star, Menu } from "lucide-react"
-import Link from "next/link"
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react"
+import { ArrowRight } from "lucide-react"
+import { motion } from "framer-motion"
 
-// Star animation component
-const FallingStars = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
+export default function HeroSection() {
+  const phrases = [
+    "visitors into paying customers.",
+    "visitors into buyers instantly!",
+    "traffic into paying customers.",
+    "engage, attract, and sell!",
+    "boost sales by converting visitors.",
+    "clicks into cash!",
+  ]
+
+  const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0)
+  const [isAnimating, setIsAnimating] = useState(false)
 
   useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
-
-    const ctx = canvas.getContext("2d")
-    if (!ctx) return
-
-    // Set canvas to full screen
-    const handleResize = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
-    }
-
-    window.addEventListener("resize", handleResize)
-    handleResize()
-
-    // Star properties
-    const stars: {
-      x: number
-      y: number
-      size: number
-      speed: number
-      opacity: number
-      tail: { x: number; y: number }[]
-    }[] = []
-
-    // Create stars
-    const createStars = () => {
-      const maxStars = Math.floor(window.innerWidth / 15) // Responsive number of stars
-
-      if (stars.length < maxStars && Math.random() < 0.05) {
-        const size = Math.random() * 2 + 1
-        stars.push({
-          x: Math.random() * canvas.width,
-          y: 0,
-          size,
-          speed: Math.random() * 1 + 0.5,
-          opacity: Math.random() * 0.8 + 0.2,
-          tail: [],
-        })
-      }
-    }
-
-    // Draw stars
-    const drawStars = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
-
-      stars.forEach((star, index) => {
-        // Update position
-        star.y += star.speed
-
-        // Store position for tail
-        star.tail.push({ x: star.x, y: star.y })
-        if (star.tail.length > 5) {
-          star.tail.shift()
-        }
-
-        // Draw tail
-        if (star.tail.length > 1) {
-          ctx.beginPath()
-          ctx.moveTo(star.tail[0].x, star.tail[0].y)
-
-          for (let i = 1; i < star.tail.length; i++) {
-            ctx.lineTo(star.tail[i].x, star.tail[i].y)
-          }
-
-          ctx.strokeStyle = `rgba(0, 255, 247, ${star.opacity * 0.5})`
-          ctx.lineWidth = star.size / 2
-          ctx.stroke()
-        }
-
-        // Draw star
-        ctx.beginPath()
-        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(0, 255, 247, ${star.opacity})`
-        ctx.fill()
-
-        // Remove if off screen
-        if (star.y > canvas.height) {
-          stars.splice(index, 1)
-        }
-      })
-    }
-
-    // Animation loop
-    const animate = () => {
-      createStars()
-      drawStars()
-      requestAnimationFrame(animate)
-    }
-
-    animate()
+    const interval = setInterval(() => {
+      setIsAnimating(true)
+      setTimeout(() => {
+        setCurrentPhraseIndex((prev) => (prev + 1) % phrases.length)
+        setIsAnimating(false)
+      }, 500) // Half a second for fade out
+    }, 4000) // Change every 4 seconds
 
     return () => {
-      window.removeEventListener("resize", handleResize)
+      clearInterval(interval)
     }
-  }, [])
+  }, [phrases.length])
 
-  return <canvas ref={canvasRef} className="fixed inset-0 pointer-events-none z-10" />
-}
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3,
+      },
+    },
+  }
 
-const MouseFollower = () => {
-  const [position, setPosition] = useState({ x: 0, y: 0 })
-
-  // Only enable mouse follower on devices with hover capability
-  const [hasHover, setHasHover] = useState(false)
-
-  useEffect(() => {
-    // Check if device has hover capability
-    setHasHover(window.matchMedia("(hover: hover)").matches)
-
-    const updatePosition = (e: MouseEvent) => {
-      setPosition({ x: e.clientX, y: e.clientY })
-    }
-
-    if (hasHover) {
-      window.addEventListener("mousemove", updatePosition)
-      return () => window.removeEventListener("mousemove", updatePosition)
-    }
-  }, [hasHover])
-
-  if (!hasHover) return null
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  }
 
   return (
     <>
@@ -355,7 +272,7 @@ export default function Hero() {
       clipRule="evenodd"
     />
   </svg>
-  <span>Get a Free Website Audit Now.</span>
+  <span>WhatsApp Now</span>
 </Button>
 
 
@@ -389,5 +306,3 @@ export default function Hero() {
   )
 }
 
-
-export { Hero }
