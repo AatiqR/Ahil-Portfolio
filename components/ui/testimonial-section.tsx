@@ -255,7 +255,7 @@ const thirdColumnTestimonials: Testimonial[] = [
         {animationStyles}
       </style>
 
-      <div className="flex flex-col my-24 bg-[#080808] text-white">
+      <div id="Reviews" className="flex flex-col my-24 bg-[#080808] text-white">
         <h1 className="text-2xl md:text-4xl lg:text-5xl mx-auto font-bold text-center mb-10">
           What people are <span className="text-[#00ff59]">saying </span>about us.
         </h1>

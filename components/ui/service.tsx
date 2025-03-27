@@ -2,11 +2,11 @@ import { Check } from "lucide-react"
 
 export default function ServiceCards() {
   return (
-    <div className="w-full bg-black text-white py-8">
+    <div id="Service" className="w-full bg-black text-white py-8">
       <div className="max-w-8xl mx-auto px-4">
         {/* Service Heading with UFO Green Glow */}
         <div className="text-center mb-10">
-          <h1 className="text-5xl font-bold mb-3 text-green-400 ufo-glow">Our Services</h1>
+          <h1 className="text-5xl font-bold mb-3 text-[#00ff08] ufo-glow">Our Services</h1>
           <p className="text-gray-300 max-w-2xl mx-auto">
             Professional web development solutions tailored to your needs. Choose the service that best fits your
             project requirements.
@@ -17,7 +17,7 @@ export default function ServiceCards() {
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
   {/* Custom Websites */}
   <div className="border border-gray-800 rounded-xl p-5 flex flex-col">
-    <h2 className="text-2xl font-bold mb-1 text-green-500">Custom Websites</h2>
+    <h1 className="text-2xl font-bold mb-1 text-[#00ff08]">Custom Websites</h1>
     <div className="text-sm font-bold text-white mb-4">Stand out with a one-of-a-kind website crafted just for your brand.</div>
 
     <h3 className="text-lg font-semibold mb-4">What’s Included?</h3>
@@ -28,7 +28,7 @@ export default function ServiceCards() {
         <span>Custom designs that capture your unique vision</span>
       </li>
       <li className="flex items-start">
-        <Check className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+        <Check className="h-4 w-4 text-green-300 mr-2 mt-0.5 flex-shrink-0" />
         <span>Flawless performance on all devices</span>
       </li>
       <li className="flex items-start">
@@ -67,7 +67,7 @@ export default function ServiceCards() {
 
   {/* Website Redesign */}
   <div className="border border-gray-800 rounded-xl p-5 flex flex-col">
-    <h2 className="text-2xl font-bold mb-1 text-green-400">Website Redesign</h2>
+    <h2 className="text-2xl font-bold mb-1 text-[#00ff08]">Website Redesign</h2>
     <div className="text-sm font-bold text-white mb-4">Revamp your old site into a modern masterpiece that wows visitors.</div>
 
     <h3 className="text-lg font-semibold mb-4">What’s Included?</h3>
@@ -117,7 +117,7 @@ export default function ServiceCards() {
 
   {/* Portfolio Websites */}
   <div className="border border-gray-800 rounded-xl p-5 flex flex-col">
-    <h2 className="text-2xl text-green-500 font-bold mb-1">Portfolio Websites</h2>
+    <h2 className="text-2xl text-[#00ff08] font-bold mb-1">Portfolio Websites</h2>
     <div className="text-sm font-bold text-white mb-4">Highlight your talent with a jaw-dropping portfolio that gets noticed.</div>
 
     <h3 className="text-lg font-semibold mb-4">What’s Included?</h3>
@@ -167,7 +167,7 @@ export default function ServiceCards() {
 
   {/* E-commerce Websites */}
   <div className="border border-gray-900 rounded-xl p-5 flex flex-col">
-    <h2 className="text-2xl font-bold mb-1 text-green-400">E-commerce</h2>
+    <h2 className="text-2xl font-bold mb-1 text-[#00ff08]">E-commerce</h2>
     <div className="text-sm font-bold mb-4">Launch a sleek online store that turns visitors into loyal customers.</div>
 
     <h3 className="text-lg font-semibold mb-4">What’s Included?</h3>
@@ -221,7 +221,7 @@ export default function ServiceCards() {
 
   {/* New Service: Business Website */}
   <div className="border border-gray-800 rounded-xl p-5 flex flex-col">
-    <h2 className="text-2xl font-bold mb-1 text-green-500">Business Website</h2>
+    <h2 className="text-2xl font-bold mb-1 text-[#00ff08]">Business Website</h2>
     <div className="text-sm font-bold text-white mb-4">Grow your business with a professional site that wins trust and clients.</div>
 
     <h3 className="text-lg font-semibold mb-4">What’s Included?</h3>

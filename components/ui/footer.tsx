@@ -21,7 +21,7 @@ export default function Footer() {
   }, [])
 
   return (
-    <footer className="bg-black text-white pt-16 pb-8 px-4 md:px-8 relative overflow-hidden">
+    <footer id="Contact" className="bg-black text-white pt-16 pb-8 px-4 md:px-8 relative overflow-hidden">
       {/* Enhanced background with animated gradient */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black via-black to-[#0a1a0a] opacity-80"></div>
@@ -109,13 +109,15 @@ export default function Footer() {
             </h3>
 
             {/* Enhanced CTA button */}
-            <Link
-              href="#"
-              className="group flex items-center justify-between bg-[#4AE54A] hover:bg-[#3bd43b] text-black font-medium rounded-md px-5 py-3 transition-all duration-300 w-full mb-6 shadow-[0_0_15px_rgba(74,229,74,0.3)] hover:shadow-[0_0_20px_rgba(74,229,74,0.5)]"
-            >
-              <span>Book a Free Consultation</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
+            <a
+  href="https://wa.me/+9203432357017?text=Hi,%20I’d%20like%20to%20book%20a%20free%20consultation!"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="group flex items-center justify-between bg-[#4AE54A] hover:bg-[#3bd43b] text-black font-medium rounded-md px-5 py-3 transition-all duration-300 w-full mb-6 shadow-[0_0_15px_rgba(74,229,74,0.3)] hover:shadow-[0_0_20px_rgba(74,229,74,0.5)]"
+>
+  <span>Book a Free Consultation call</span>
+  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+</a>
 
             {/* Contact Information - Enhanced */}
             <div className="space-y-3 mt-5">
