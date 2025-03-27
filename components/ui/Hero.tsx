@@ -237,16 +237,16 @@ export default function Hero() {
 
         {mobileMenuOpen && (
           <div className="md:hidden absolute top-full left-0 right-0 mt-2 bg-black rounded-lg p-6 flex flex-col gap-6">
-            <Link href="#" className="text-white hover:text-[#00ff59] text-xl sm:text-sm font-bold transition-colors">
-              About Us
+            <Link href="#Contact" className="text-white hover:text-[#00ff59] text-xl sm:text-sm font-bold transition-colors">
+              Contact Us
             </Link>
-            <Link href="#" className="text-white hover:text-[#00ff59] text-xl sm:text-sm font-bold transition-colors">
+            <Link href="#Service" className="text-white hover:text-[#00ff59] text-xl sm:text-sm font-bold transition-colors">
               Services
             </Link>
-            <Link href="#" className="text-white hover:text-[#00ff59] text-xl sm:text-sm font-bold transition-colors">
+            <Link href="#Project" className="text-white hover:text-[#00ff59] text-xl sm:text-sm font-bold transition-colors">
               Projects
             </Link>
-            <Link href="#" className="text-white hover:text-[#00ff59] text-xl sm:text-sm font-bold transition-colors">
+            <Link href="#Reviews" className="text-white hover:text-[#00ff59] text-xl sm:text-sm font-bold transition-colors">
               Reviews
             </Link>
           </div>
