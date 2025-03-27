@@ -318,7 +318,7 @@ export default function Hero() {
                 <span>Email Now</span>
               </Button>
 
-              <Button
+              {/* <Button
                 size="lg"
                 variant="outline"
                 className="relative w-full sm:w-auto mt-4 sm:mt-0 text-xl sm:text-base py-8 sm:py-2 px-8 text-black bg-[#00e650] border-none rounded-lg shadow-lg transition-all duration-300 ease-in-out hover:shadow-xl active:translate-y-1 flex items-center gap-3"
@@ -337,7 +337,27 @@ export default function Hero() {
                   />
                 </svg>
                 <span>Get a Free Website Audit Now.</span>
-              </Button>
+              </Button> */}
+              <Button
+  size="lg"
+  variant="outline"
+  className="relative w-full sm:w-auto mt-4 sm:mt-0 text-lg sm:text-base py-6 sm:py-2 px-6 sm:px-8 text-black bg-[#00e650] border-none rounded-lg shadow-lg transition-all duration-300 ease-in-out hover:shadow-xl active:translate-y-1 flex items-center gap-2 sm:gap-3"
+  onClick={() => window.open('https://wa.me/+9203432357017', '_blank')}
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    className="w-6 h-6 sm:w-7 sm:h-7"
+  >
+    <path
+      fillRule="evenodd"
+      d="M12 2a10 10 0 0 0-8.464 15.51L2 22l4.49-1.535A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-6.829-12.2l.383-.6-.57-.822A8.003 8.003 0 1 1 20 12a8.001 8.001 0 0 1-8 8zm-1.07-5.646c1.225.746 2.163 1.16 2.834 1.24.56.067 1.007-.073 1.42-.414.302-.256.74-.805.916-1.108.169-.288.14-.518.01-.704-.104-.151-.24-.204-.394-.285-.154-.081-.985-.485-1.14-.544s-.265-.081-.375.082c-.112.163-.433.545-.53.662-.096.118-.194.133-.35.046-.292-.16-.961-.354-1.835-1.124-.68-.583-1.14-1.304-1.34-1.607-.09-.135-.009-.254.07-.34.073-.08.163-.186.244-.28.08-.094.107-.148.162-.24.056-.09.03-.165-.004-.232-.035-.066-.32-.77-.438-1.058-.114-.282-.228-.237-.316-.237-.086 0-.186-.012-.285-.007s-.267.038-.406.176c-.14.139-.55.536-.55 1.31 0 .773.562 1.52.64 1.63.079.11 1.104 1.71 2.678 2.605z"
+      clipRule="evenodd"
+    />
+  </svg>
+  <span className="text-base sm:text-lg">Get a Free Website Audit Now.</span>
+</Button>
             </div>
 
             <div className="relative mt-16 sm:mt-18">
