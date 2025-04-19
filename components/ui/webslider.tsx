@@ -95,7 +95,7 @@ export default function WebsiteShowcaseSlider() {
   const touchEndX = useRef<number | null>(null)
 
   // Use the built-in mobile hook instead of custom media queries
-  const { isMobile, isTablet, isDesktop } = useMobile()
+  const { isMobile, isTablet,  } = useMobile()
 
   // Calculate card dimensions based on screen size - memoized to prevent recalculation
   const cardDimensions = useMemo(() => {
