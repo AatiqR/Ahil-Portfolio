@@ -372,7 +372,7 @@ export default function Hero() {
 
               <div className="w-[320px] h-[320px] sm:w-[200px] sm:h-[200px] md:w-[300px] md:h-[300px] mx-auto relative right-[-6px] top-[-12px]">
                 <Image
-                  src="/Assets/my.jpg"
+                  src="/Assets/my.png"
                   alt="Happy boy"
                   fill
                   className="rounded-full object-cover"

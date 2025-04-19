@@ -10,6 +10,7 @@ export default function EcommerceLandingPage() {
           {/* Left side with phone mockups */}
           <div className="relative h-[300px] md:h-[500px] overflow-hidden bg-transparent">
             <Image
+              loading="lazy"
               src="/Assets/project/portfoliowebsite.gif"
               width={600}
               height={400}
