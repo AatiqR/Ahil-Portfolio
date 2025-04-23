@@ -1,5 +1,4 @@
 import Hero from "../components/ui/Hero"
-// import WebSlider from "../components/ui/website-showcase-slider"np
 import WebSliderf from "../components/ui/webslider"
 import Reviews from "../components/ui/testimonial-section"
 import Faqs from "../components/ui/faq-section"

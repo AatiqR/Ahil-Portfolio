@@ -18,17 +18,61 @@ export default function WebsiteShowcaseSlider() {
   // Memoize the websites data to prevent unnecessary re-renders
   const websites = useMemo<WebsiteDesign[]>(
     () => [
-      {
-        id: 8,
-        title: "Muse Interiors & Home Styling Website",
-        category: "Interior Design",
-        image: "/Assets/slider/interior.png",
-      },
+      
       {
         id: 10,
         title: "Al Mustafa IT Academy Website",
         category: "Education & Learning",
         image: "/Assets/slider/almustafa.png",
+      },
+      {
+        id: 16,
+        title: "Padra Website",
+        category: "Cosmetic Surgery & Health",
+        image: "/Assets/slider/padra.png",
+      },
+    
+      {
+        id: 20,
+        title: "Solar Pro Website",
+        category: "Solar Energy & Solutions",
+        image: "/Assets/slider/solarpro.png",
+      },
+      
+     
+      {
+        id: 1,
+        title: "GigaFit – Ultimate Gym & Fitness Website",
+        category: "Health & Fitness",
+        image: "/Assets/slider/gym.png",
+      },
+  
+   
+      {
+        id: 15,
+        title: "Raphaelson LevineWebsite",
+        category: "Law & Legal Services",
+        image: "/Assets/slider/Raphaelson Levine.png",
+      },
+   
+      {
+        id: 12,
+        title: "Dr Nicholas Website",
+        category: "Chiropractor & Health",
+        image: "/Assets/slider/Dr Nicholas Asp.png",
+      },
+  
+      {
+        id: 6,
+        title: "Oliver – Creative Portfolio Website",
+        category: "Personal Branding & Portfolio",
+        image: "/Assets/slider/portfolio.jpg",
+      },
+      {
+        id: 13,
+        title: "Morelli Law firm Website",
+        category: "Law & Legal Services",
+        image: "/Assets/slider/Morelli Law firm.png",
       },
       {
         id: 3,
@@ -37,23 +81,12 @@ export default function WebsiteShowcaseSlider() {
         image: "/Assets/slider/contracting.png",
       },
       {
-        id: 1,
-        title: "GigaFit – Ultimate Gym & Fitness Website",
-        category: "Health & Fitness",
-        image: "/Assets/slider/gym.png",
-      },
-      {
-        id: 6,
-        title: "Oliver – Creative Portfolio Website",
-        category: "Personal Branding & Portfolio",
-        image: "/Assets/slider/portfolio.jpg",
-      },
-      {
         id: 11,
         title: "Premium Dog Care & Training Website",
         category: "Pet Services",
         image: "/Assets/slider/dogcare.png",
       },
+   
       {
         id: 2,
         title: "Donut Media – Digital Marketing Agency Website",
@@ -65,6 +98,12 @@ export default function WebsiteShowcaseSlider() {
         title: "Adam Care Technical Solutions Website",
         category: "Technical & Maintenance Services",
         image: "/Assets/slider/service.png",
+      },
+      {
+        id: 10,
+        title: "Al Mustafa IT Academy Website",
+        category: "Education & Learning",
+        image: "/Assets/slider/almustafa.png",
       },
       {
         id: 9,
@@ -84,6 +123,40 @@ export default function WebsiteShowcaseSlider() {
         category: "Home & Building Maintenance",
         image: "/Assets/slider/waterproofing.png",
       },
+      {
+        id: 17,
+        title: "Skyline Consturction Website",
+        category: "Construction & Renovation",
+        image: "/Assets/slider/SkylineConsturction.png",
+      }, 
+    
+  
+       {
+        id: 14,
+        title: "Sam Clinic Dr Haytham Website",
+        category: "Chiropractor & Health",
+        image: "/Assets/slider/SamClinicDr Haytham.png",
+      },
+    
+      {
+        id: 18,
+        title: "Dr Maya Dental CenterWebsite",
+        category: "Dental & Health",
+        image: "/Assets/slider/Dr Maya Dental Center.png",
+      },
+      {
+        id: 8,
+        title: "Muse Interiors & Home Styling Website",
+        category: "Interior Design",
+        image: "/Assets/slider/interior.png",
+      },
+       {
+        id: 19,
+        title: "National Medical CenterWebsite",
+        category: " Dental & Health,",
+        image: "/Assets/slider/National Medical Center.png",
+      },
+     
     ],
     [],
   )
@@ -280,9 +353,9 @@ export default function WebsiteShowcaseSlider() {
                     />
 
                     {isActive && (
-                      <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-3 md:p-4 bg-black/80">
-                        <p className="text-white font-medium text-sm sm:text-base md:text-lg">{website.title}</p>
-                        <p className="text-white/70 text-xs sm:text-sm">{website.category}</p>
+                      <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-3 md:p-4 bg-black/20">
+                        <p className="text-white font-medium text-md sm:text-base md:text-lg">{website.title}</p>
+                        <p className="text-white text-xs sm:text-sm">{website.category}</p>
                       </div>
                     )}
                   </div>
