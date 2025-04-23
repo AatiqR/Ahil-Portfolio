@@ -19,39 +19,39 @@ export default function LogoSlider() {
     {
       name: "Adobe",
       logo: "/Assets/client/f.svg",
-      height: 60,
-      width: 120,
+      height: 70,
+      width: 140,
     },
     {
       name: "Google",
       logo: "/Assets/client/1.png",
-      height: 60,
-      width: 120,
+      height: 70,
+      width: 140,
     },
     {
       name: "Meta",
       logo: "/Assets/client/2.png",
-      height: 60,
-      width: 120,
+      height: 70,
+      width: 140,
     },
     {
       name: "Netflix",
       logo: "/Assets/client/3.png",
-      height: 60,
-      width: 120,
+      height: 70,
+      width: 140,
     },
  
     {
       name: "Airbnb",
       logo: "/Assets/client/4.png",
-      height: 60,
-      width: 120,
+      height: 70,
+      width: 140,
     },
     {
       name: "Microsoft",
       logo: "/Assets/client/5.png",
-      height: 60,
-      width: 120,
+      height: 70,
+      width: 140,
     },
     {
       name: "Apple",
@@ -68,19 +68,19 @@ export default function LogoSlider() {
     {
       name: "Twitter",
       logo: "/Assets/client/8.png",
-      height: 60,
-      width: 120,
+      height: 70,
+      width: 140,
     },
     {
       name: "Amazon",
       logo: "/Assets/client/9.png",
-      height: 60,
-      width: 120,
+      height: 70,
+      width: 140,
     },   {
       name: "Amazon",
       logo: "/Assets/client/10.png",
-      height: 60,
-      width: 120,
+      height: 70,
+      width: 140,
     },   {
       name: "Amazon",
       logo: "/Assets/client/11.png",
@@ -95,7 +95,7 @@ export default function LogoSlider() {
         <h2 className="text-2xl md:text-3xl font-bold text-green-400 mb-2">
           Trusted by job seekers who are landed at top companies
         </h2>
-        <p className="text-base text-black">
+        <p className="text-base text-white">
           Trusted By this companies and many more World wide
         </p>
       </div>
@@ -111,14 +111,14 @@ export default function LogoSlider() {
             x: {
               repeat: Number.POSITIVE_INFINITY,
               repeatType: "loop",
-              duration: 20,
+              duration: 25,
               ease: "linear",
             },
           }}
         >
           {companies.map((company, index) => (
    <div key={index} className="flex-shrink-0 flex items-center justify-center h-28 w-40">
-   <div className="rounded-lg p-4 flex items-center justify-center w-full h-full">
+   <div className="bg-white rounded-lg p-1 flex items-center justify-center w-full h-full">
      <Image
        src={company.logo || "/placeholder.svg"}
        alt={`${company.name} logo`}
