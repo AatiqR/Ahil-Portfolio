@@ -93,7 +93,7 @@ export default function LogoSlider() {
     <div className="w-full h-[300px] bg-black flex flex-col justify-center px-4 md:px-10 overflow-hidden rounded-4xl">
       <div className="mb-6 text-center">
         <h2 className="text-2xl md:text-3xl font-bold text-green-400 mb-2">
-          Trusted by job seekers who are landed at top companies
+          Our client 
         </h2>
         <p className="text-base text-white">
           Trusted By this companies and many more World wide
