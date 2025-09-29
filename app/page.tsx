@@ -6,6 +6,7 @@ import Faqs from "../components/ui/faq-section"
 import Webpro from "../components/ui/Webpro"
 import Benefit from "../components/ui/features-section"
 import Service from "../components/ui/service"
+import Booking from "../components/ui/booking"
 import Footer from "../components/ui/footer"
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
       <Reviews/>
       <Benefit/>
       <Service/>
+      <Booking/>
       <Faqs />
       <Footer/>
 
