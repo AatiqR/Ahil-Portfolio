@@ -1,20 +1,18 @@
-
 "use client"
 
-import type React from "react"
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { FaLinkedin, FaTwitter, FaFacebook, FaInstagram } from "react-icons/fa"
-import { Mail, Phone, MapPin, ArrowRight, CheckCircle, ChevronRight } from "lucide-react"
-import { LucideIcon } from "lucide-react"; // optional for stricter typing
+import { FaLinkedin, FaTwitter, FaFacebook, FaInstagram, IconType } from "react-icons/fa"
+import { Mail, Phone, MapPin, ArrowRight, CheckCircle, ChevronRight, LucideIcon } from "lucide-react"
 
+// Props
 type ContactInfoProps = {
-  icon: LucideIcon; // or React.ComponentType<any>
-  text: string;
-};
-// Props for Social Icons
+  icon: LucideIcon
+  text: string
+}
+
 interface SocialIconProps {
-  icon: React.ComponentType<React.SVGAttributes<SVGElement>>
+  icon: IconType // handles react-icons (FaX) correctly
   name?: string
 }
 
@@ -26,7 +24,10 @@ export default function Footer() {
   }, [])
 
   return (
-    <footer id="Contact" className="bg-black text-white pt-16 pb-8 px-4 md:px-8 relative overflow-hidden">
+    <footer
+      id="Contact"
+      className="bg-black text-white pt-16 pb-8 px-4 md:px-8 relative overflow-hidden"
+    >
       {/* Background Glow */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black via-black to-[#0a1a0a] opacity-90"></div>
@@ -53,7 +54,10 @@ export default function Footer() {
               <h3 className="text-white text-2xl font-bold">Ahil</h3>
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              Strategically crafted websites with persuasive copy and seamless development—designed to convert visitors into loyal customers. Helping brands worldwide maximize growth, boost sales, and create lasting impact.
+              Strategically crafted websites with persuasive copy and seamless
+              development—designed to convert visitors into loyal customers.
+              Helping brands worldwide maximize growth, boost sales, and create
+              lasting impact.
             </p>
 
             {/* Achievements */}
@@ -103,7 +107,8 @@ export default function Footer() {
           {/* CTA / Contact */}
           <div className="lg:col-span-4 bg-gradient-to-br from-black/80 to-[#0c1f0c]/50 p-6 rounded-xl border border-gray-800/50 shadow-xl backdrop-blur-sm">
             <h3 className="text-white text-lg font-semibold mb-4">
-              <span className="text-[#39FF14]">Ready</span> to transform your business?
+              <span className="text-[#39FF14]">Ready</span> to transform your
+              business?
             </h3>
 
             {/* CTA Button */}
@@ -129,7 +134,8 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-gray-800/50 pt-6 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm mb-4 md:mb-0">
-            © {new Date().getFullYear()} <span className="text-[#39FF14]">Ahil</span>. All rights reserved.
+            © {new Date().getFullYear()}{" "}
+            <span className="text-[#39FF14]">Ahil</span>. All rights reserved.
           </p>
           <div className="flex items-center space-x-6">
             <FooterBottomLink text="Privacy Policy" />
@@ -150,7 +156,9 @@ function FooterLink({ href, text }: { href: string; text: string }) {
         className="text-gray-300 hover:text-white transition-all duration-300 relative group flex items-center"
       >
         <ChevronRight className="w-4 h-4 mr-1 text-[#39FF14] opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0" />
-        <span className="group-hover:translate-x-1 transition-transform duration-300">{text}</span>
+        <span className="group-hover:translate-x-1 transition-transform duration-300">
+          {text}
+        </span>
       </Link>
     </div>
   )
@@ -161,15 +169,13 @@ function SocialIcon({ icon: Icon, name = "Social Icon" }: SocialIconProps) {
     <Link href="#" className="relative group" aria-label={name}>
       <div className="absolute inset-0 bg-[#39FF14] rounded-lg blur opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
       <div className="relative w-10 h-10 rounded-full bg-black/40 border border-gray-800 group-hover:border-[#39FF14] flex items-center justify-center transition-all duration-300 shadow-lg transform group-hover:translate-y-[-2px]">
-        <span className="text-gray-400 group-hover:text-[#39FF14] transition-colors duration-300">
-          <Icon className="w-6 h-6" />
-        </span>
+        <Icon className="w-6 h-6 text-gray-400 group-hover:text-[#39FF14] transition-colors duration-300" />
       </div>
     </Link>
   )
 }
 
-export default function ContactInfo({ icon: Icon, text }: ContactInfoProps) {
+function ContactInfo({ icon: Icon, text }: ContactInfoProps) {
   return (
     <div className="flex items-center p-2 rounded-lg bg-black/30 border border-gray-800/50 transition-all duration-300 hover:border-[#39FF14]/60 hover:bg-black/50 group">
       <div className="mr-3 w-8 h-8 rounded-full bg-black/40 border border-gray-800 flex items-center justify-center flex-shrink-0 group-hover:border-[#39FF14]/70 transition-all duration-300">
@@ -179,12 +185,15 @@ export default function ContactInfo({ icon: Icon, text }: ContactInfoProps) {
         {text}
       </span>
     </div>
-  );
+  )
 }
 
 function FooterBottomLink({ text }: { text: string }) {
   return (
-    <Link href="#" className="text-gray-400 hover:text-white text-sm transition-colors flex items-center group">
+    <Link
+      href="#"
+      className="text-gray-400 hover:text-white text-sm transition-colors flex items-center group"
+    >
       <span>{text}</span>
       <ChevronRight className="w-4 h-4 ml-1 opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0" />
     </Link>
