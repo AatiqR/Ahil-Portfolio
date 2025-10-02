@@ -2,10 +2,11 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { FaLinkedin, FaTwitter, FaFacebook, FaInstagram, IconType } from "react-icons/fa"
+import { FaLinkedin, FaTwitter, FaFacebook, FaInstagram } from "react-icons/fa"
+import type { IconType } from "react-icons"
 import { Mail, Phone, MapPin, ArrowRight, CheckCircle, ChevronRight, LucideIcon } from "lucide-react"
 
-// Props
+
 type ContactInfoProps = {
   icon: LucideIcon
   text: string
