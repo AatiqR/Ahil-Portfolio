@@ -6,7 +6,12 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { FaLinkedin, FaTwitter, FaFacebook, FaInstagram } from "react-icons/fa"
 import { Mail, Phone, MapPin, ArrowRight, CheckCircle, ChevronRight } from "lucide-react"
+import { LucideIcon } from "lucide-react"; // optional for stricter typing
 
+type ContactInfoProps = {
+  icon: LucideIcon; // or React.ComponentType<any>
+  text: string;
+};
 // Props for Social Icons
 interface SocialIconProps {
   icon: React.ComponentType<React.SVGAttributes<SVGElement>>
@@ -164,15 +169,17 @@ function SocialIcon({ icon: Icon, name = "Social Icon" }: SocialIconProps) {
   )
 }
 
-function ContactInfo({ icon: Icon, text }: { icon: React.ComponentType<any>; text: string }) {
+export default function ContactInfo({ icon: Icon, text }: ContactInfoProps) {
   return (
     <div className="flex items-center p-2 rounded-lg bg-black/30 border border-gray-800/50 transition-all duration-300 hover:border-[#39FF14]/60 hover:bg-black/50 group">
       <div className="mr-3 w-8 h-8 rounded-full bg-black/40 border border-gray-800 flex items-center justify-center flex-shrink-0 group-hover:border-[#39FF14]/70 transition-all duration-300">
         <Icon className="text-[#39FF14] w-4 h-4" />
       </div>
-      <span className="text-gray-300 group-hover:text-white transition-colors duration-300">{text}</span>
+      <span className="text-gray-300 group-hover:text-white transition-colors duration-300">
+        {text}
+      </span>
     </div>
-  )
+  );
 }
 
 function FooterBottomLink({ text }: { text: string }) {
