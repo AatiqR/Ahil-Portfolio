@@ -1,13 +1,10 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Sparkles, Star, Menu } from "lucide-react"
+import { Sparkles, Star, Menu, X } from "lucide-react"
 import Link from "next/link"
-import { motion } from "framer-motion";
 
-// Star animation component
 const FallingStars = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -18,7 +15,6 @@ const FallingStars = () => {
     const ctx = canvas.getContext("2d")
     if (!ctx) return
 
-    // Set canvas to full screen
     const handleResize = () => {
       canvas.width = window.innerWidth
       canvas.height = window.innerHeight
@@ -27,7 +23,6 @@ const FallingStars = () => {
     window.addEventListener("resize", handleResize)
     handleResize()
 
-    // Star properties
     const stars: {
       x: number
       y: number
@@ -37,7 +32,6 @@ const FallingStars = () => {
       tail: { x: number; y: number }[]
     }[] = []
 
-    // Create stars
     const createStars = () => {
       const maxStars = Math.floor(window.innerWidth / 35)
 
@@ -54,21 +48,17 @@ const FallingStars = () => {
       }
     }
 
-    // Draw stars
     const drawStars = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
       stars.forEach((star, index) => {
-        // Update position
         star.y += star.speed
 
-        // Store position for tail
         star.tail.push({ x: star.x, y: star.y })
         if (star.tail.length > 5) {
           star.tail.shift()
         }
 
-        // Draw tail
         if (star.tail.length > 1) {
           ctx.beginPath()
           ctx.moveTo(star.tail[0].x, star.tail[0].y)
@@ -77,25 +67,22 @@ const FallingStars = () => {
             ctx.lineTo(star.tail[i].x, star.tail[i].y)
           }
 
-          ctx.strokeStyle = `rgba(0, 255, 89, ${star.opacity * 0.5})` // Changed to #00ff59
+          ctx.strokeStyle = `rgba(0, 255, 89, ${star.opacity * 0.5})`
           ctx.lineWidth = star.size / 2
           ctx.stroke()
         }
 
-        // Draw star
         ctx.beginPath()
         ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(0, 255, 89, ${star.opacity})` // Changed to #00ff59
+        ctx.fillStyle = `rgba(0, 255, 89, ${star.opacity})`
         ctx.fill()
 
-        // Remove if off screen
         if (star.y > canvas.height) {
           stars.splice(index, 1)
         }
       })
     }
 
-    // Animation loop
     const animate = () => {
       createStars()
       drawStars()
@@ -153,7 +140,7 @@ const MouseFollower = () => {
   )
 }
 
-export default function Hero() {
+export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const words = [
     "SEO-Optimized",
@@ -169,39 +156,51 @@ export default function Hero() {
     "Brand-Enhancing",
     "Market-Dominating",
     "Performance-Optimized"
-  ];
+  ]
 
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(0)
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % words.length);
-    }, 2000);
-    return () => clearInterval(interval);
-  }, [words.length]);
+      setIndex((prev) => (prev + 1) % words.length)
+    }, 2000)
+    return () => clearInterval(interval)
+  }, [words.length])
+
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+  }, [mobileMenuOpen])
 
   return (
     <div className="min-h-screen bg-black overflow-hidden">
       <FallingStars />
       <MouseFollower />
-      {/* Navigation */}
-      <nav className="fixed top-5 left-1/2 transform -translate-x-1/2 z-50 bg-white px-4 sm:px-6 py-3 sm:py-4 rounded-full w-[90%] sm:w-[80%] md:w-[70%] max-w-5xl">
+
+      <nav className="fixed top-4 sm:top-6 left-1/2 transform -translate-x-1/2 z-50 backdrop-blur-md bg-white/10 px-5 sm:px-6 py-3.5 sm:py-4 rounded-3xl w-[92%] sm:w-[85%] md:w-[75%] lg:w-[65%] max-w-5xl border-2 border-white/20 shadow-lg">
         <div className="flex items-center justify-between">
-          <button className="md:hidden text-black" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-            <Menu className="h-8 w-8 sm:h-6 sm:w-6" />
+          <button
+            className="md:hidden text-white p-1.5 hover:bg-white/10 rounded-lg transition-colors"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            <Menu className="h-5 w-5" />
           </button>
 
           <div className="hidden md:flex flex-1">
-            <div className="flex items-center gap-4 lg:gap-20">
+            <div className="flex items-center gap-6 lg:gap-10">
               <Link
                 href="#Contact"
-                className="text-black hover:text-[#00ff59] text-md font-extrabold transition-colors whitespace-nowrap"
+                className="text-white hover:text-[#00ff59] text-sm lg:text-base font-bold transition-colors whitespace-nowrap"
               >
-              Contact Us
+                Contact Us
               </Link>
               <Link
                 href="#Service"
-                className="text-black hover:text-[#00ff59] text-md font-extrabold transition-colors whitespace-nowrap"
+                className="text-white hover:text-[#00ff59] text-sm lg:text-base font-bold transition-colors whitespace-nowrap"
               >
                 Services
               </Link>
@@ -212,180 +211,198 @@ export default function Hero() {
             href="#"
             className="flex items-center gap-2 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
           >
-            <Sparkles className="h-7 w-7 sm:h-6 sm:w-6 text-[#00ff59]" />
-            <span className="text-black font-extrabold text-2xl sm:text-lg">AHIL</span>
+            <Sparkles className="h-5 w-5 sm:h-6 sm:w-6 text-[#00ff59]" />
+            <span className="text-white font-extrabold text-lg sm:text-xl lg:text-2xl">AHIL</span>
           </Link>
 
           <div className="hidden md:flex flex-1 justify-end">
-            <div className="flex items-center gap-4 lg:gap-20">
+            <div className="flex items-center gap-6 lg:gap-8">
               <Link
                 href="#Project"
-                className="text-black hover:text-[#00ff59] text-md font-extrabold transition-colors whitespace-nowrap"
+                className="text-white hover:text-[#00ff59] text-sm lg:text-base font-bold transition-colors whitespace-nowrap"
               >
                 Projects
               </Link>
               <Link
                 href="#Reviews"
-                className="text-black hover:text-[#00ff59] text-md font-extrabold transition-colors whitespace-nowrap"
+                className="text-white hover:text-[#00ff59] text-sm lg:text-base font-bold transition-colors whitespace-nowrap"
               >
                 Reviews
               </Link>
+              <Button
+                size="sm"
+                className="bg-[#00ff59] text-black hover:bg-[#00dd4f] font-bold shadow-lg hover:shadow-[0_0_20px_rgba(0,255,89,0.5)] transition-all duration-300 text-sm"
+              >
+                Book a Call
+              </Button>
             </div>
           </div>
-          <div className="w-7 md:hidden"></div>
+          <div className="w-8 md:hidden"></div>
         </div>
 
         {mobileMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 mt-2 bg-black rounded-lg p-6 flex flex-col gap-6">
-            <Link href="#Contact" className="text-white hover:text-[#00ff59] text-xl sm:text-sm font-bold transition-colors">
-              Contact Us
-            </Link>
-            <Link href="#Service" className="text-white hover:text-[#00ff59] text-xl sm:text-sm font-bold transition-colors">
-              Services
-            </Link>
-            <Link href="#Project" className="text-white hover:text-[#00ff59] text-xl sm:text-sm font-bold transition-colors">
-              Projects
-            </Link>
-            <Link href="#Reviews" className="text-white hover:text-[#00ff59] text-xl sm:text-sm font-bold transition-colors">
-              Reviews
-            </Link>
+          <div className="md:hidden fixed inset-0 top-20 left-0 right-0 bg-black/98 backdrop-blur-xl z-[100] animate-in fade-in slide-in-from-top-5 duration-300">
+            <div className="flex flex-col h-full px-6 py-8">
+              <button
+                className="absolute top-6 right-6 text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+                aria-label="Close menu"
+              >
+                <X className="h-6 w-6" />
+              </button>
+
+              <div className="flex flex-col gap-8 mt-8">
+                <Link
+                  href="#Contact"
+                  className="text-white hover:text-[#00ff59] text-2xl font-bold transition-colors border-b border-white/10 pb-4"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Contact Us
+                </Link>
+                <Link
+                  href="#Service"
+                  className="text-white hover:text-[#00ff59] text-2xl font-bold transition-colors border-b border-white/10 pb-4"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Services
+                </Link>
+                <Link
+                  href="#Project"
+                  className="text-white hover:text-[#00ff59] text-2xl font-bold transition-colors border-b border-white/10 pb-4"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Projects
+                </Link>
+                <Link
+                  href="#Reviews"
+                  className="text-white hover:text-[#00ff59] text-2xl font-bold transition-colors border-b border-white/10 pb-4"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Reviews
+                </Link>
+              </div>
+
+              <div className="mt-auto pb-8">
+                <Button
+                  size="lg"
+                  className="bg-[#00ff59] text-black hover:bg-[#00dd4f] font-bold shadow-lg hover:shadow-[0_0_20px_rgba(0,255,89,0.5)] transition-all duration-300 w-full text-xl py-7"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Book a Call
+                </Button>
+              </div>
+            </div>
           </div>
         )}
       </nav>
 
-      {/* Hero Section */}
-      <main className="pt-24 sm:pt-20 md:pt-28 px-8 sm:px-4">
+      <main className="pt-24 sm:pt-28 md:pt-32 lg:pt-36 px-5 sm:px-6 md:px-8">
         <div className="mx-auto max-w-7xl relative">
-          <div className="absolute -left-2 sm:-left-4 top-10 sm:top-20">
-            <Sparkles className="h-12 w-12 sm:h-8 sm:w-8 text-[#00ff59]" />
+          <div className="absolute -left-5 sm:-left-10 top-8 sm:top-16 md:top-20">
+            <div className="w-48 h-48 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-[#00ff59] opacity-15 blur-3xl"></div>
           </div>
-          <div className="absolute -right-2 sm:-right-4 top-20 sm:top-40">
-            <Sparkles className="h-12 w-12 sm:h-8 sm:w-8 text-[#00ff59]" />
+          <div className="absolute -right-5 sm:-right-10 top-16 sm:top-32 md:top-40">
+            <div className="w-32 h-32 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-full bg-[#00ff59] opacity-10 blur-3xl"></div>
           </div>
 
-          <div className="text-center space-y-10 sm:space-y-6 relative">
+          <div className="text-center space-y-6 sm:space-y-7 md:space-y-10 relative">
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
-              <div className="absolute top-1/4 left-1/4 w-24 sm:w-16 md:w-32 h-px bg-gradient-to-r from-transparent via-[#00ff59] to-transparent transform rotate-45"></div>
-              <div className="absolute bottom-1/4 right-1/4 w-24 sm:w-16 md:w-32 h-px bg-gradient-to-r from-transparent via-[#00ff59] to-transparent transform -rotate-45"></div>
+              <div className="absolute top-1/4 left-1/4 w-16 sm:w-24 md:w-32 h-px bg-gradient-to-r from-transparent via-[#00ff59] to-transparent transform rotate-45"></div>
+              <div className="absolute bottom-1/4 right-1/4 w-16 sm:w-24 md:w-32 h-px bg-gradient-to-r from-transparent via-[#00ff59] to-transparent transform -rotate-45"></div>
 
-              <Star className="absolute top-1/3 left-1/6 h-6 w-6 sm:h-4 sm:w-4 text-[#00ff59] animate-pulse" />
+              <Star className="absolute top-1/3 left-1/6 h-3 w-3 sm:h-5 sm:w-5 md:h-6 md:w-6 text-[#00ff59] animate-pulse" />
               <Star
-                className="absolute bottom-1/3 right-1/6 h-5 w-5 sm:h-3 sm:w-3 text-[#00ff59] animate-pulse"
+                className="absolute bottom-1/3 right-1/6 h-2.5 w-2.5 sm:h-4 sm:w-4 md:h-5 md:w-5 text-[#00ff59] animate-pulse"
                 fill="#00ff59"
               />
 
-              <div className="w-5 h-5 sm:w-3 sm:h-3 bg-[#00ff59] rounded-full absolute animate-float1 top-1/4 left-1/3 opacity-50"></div>
-              <div className="w-4 h-4 sm:w-2 sm:h-2 bg-[#00ff59] rounded-full absolute animate-float2 left-1/4 top-3/4 opacity-50"></div>
-              <div className="w-3 h-3 sm:w-1 sm:h-1 bg-[#00ff59] rounded-full absolute animate-float3 right-1/4 bottom-1/4 opacity-50"></div>
-
-              <div className="absolute top-[350px] sm:top-[270px] left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                <div className="w-40 h-40 sm:w-24 sm:h-24 rounded-full bg-[#00ff59] opacity-10 animate-pulse"></div>
-                <div className="w-32 h-32 sm:w-16 sm:h-16 rounded-full bg-[#00ff59] opacity-20 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-pulse animation-delay-200"></div>
-              </div>
+              <div className="w-2.5 h-2.5 sm:w-4 sm:h-4 md:w-5 md:h-5 bg-[#00ff59] rounded-full absolute animate-pulse top-1/4 left-1/3 opacity-50"></div>
+              <div className="w-2 h-2 sm:w-3 sm:h-3 md:w-4 md:h-4 bg-[#00ff59] rounded-full absolute animate-pulse left-1/4 top-3/4 opacity-50"></div>
+              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 md:w-3 md:h-3 bg-[#00ff59] rounded-full absolute animate-pulse right-1/4 bottom-1/4 opacity-50"></div>
             </div>
 
-            <h1 className="text-6xl sm:text-4xl md:text-6xl lg:text-7xl font-bold max-w-sm sm:max-w-xs md:max-w-2xl lg:max-w-4xl mx-auto leading-tight relative z-10 text-white">
-  I Build{" "}
-  <motion.span
-    key={words[index]}
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, y: -20 }}
-    transition={{ duration: 0.5 }}
-    className="text-yellow-400"
-  >
-    {words[index]}
-  </motion.span>{" "}
-  Websites That Drive Business Growth.
-</h1>
+            <h1 className="text-[2.5rem] leading-[1.08] sm:text-5xl sm:leading-[1.1] md:text-6xl lg:text-7xl xl:text-8xl font-black max-w-[90%] sm:max-w-lg md:max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto relative z-10 text-white tracking-tight">
+              I Build{" "}
+              <span
+                key={words[index]}
+                className="text-[#00ff59] inline-block transition-all duration-500 break-words"
+              >
+                {words[index]}
+              </span>{" "}
+              Websites That Drive Business Growth.
+            </h1>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-4 mt-10 sm:mt-6">
+            <p className="text-gray-400 text-base sm:text-lg md:text-xl lg:text-2xl max-w-[85%] sm:max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto relative z-10 font-medium leading-relaxed">
+              Helping coaches, doctors, law firms, and startups grow with fast, modern SEO-ready websites.
+            </p>
+
+            <div className="flex flex-col items-center justify-center pt-2 sm:pt-6 md:pt-8 relative z-10">
               <Button
                 size="lg"
-                className="relative w-full sm:w-auto text-xl sm:text-base py-8 sm:py-2 px-8 text-white bg-[#ff8c00] border-none rounded-lg shadow-lg transition-all duration-300 ease-in-out hover:shadow-xl hover:bg-[#ff7b00] active:translate-y-1 flex items-center gap-3"
-                onClick={() => window.location.href = 'mailto:ahilr9527@email.com'}
+                className="relative w-[90%] sm:w-auto text-lg sm:text-lg md:text-xl py-7 sm:py-7 md:py-8 px-10 sm:px-10 md:px-12 text-black bg-[#00ff59] border-none rounded-xl sm:rounded-lg shadow-lg hover:shadow-[0_0_30px_rgba(0,255,89,0.6)] transition-all duration-300 ease-in-out hover:bg-[#00dd4f] active:translate-y-1 font-bold"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="w-7 h-7"
-                >
-                  <path
-                    d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm16 2-8 5-8-5v12h16zm-8 4 8-5H4z"
-                  />
-                </svg>
-                <span>Email Now</span>
+                Get a Free Consultation
               </Button>
-
-              {/* <Button
-                size="lg"
-                variant="outline"
-                className="relative w-full sm:w-auto mt-4 sm:mt-0 text-xl sm:text-base py-8 sm:py-2 px-8 text-black bg-[#00e650] border-none rounded-lg shadow-lg transition-all duration-300 ease-in-out hover:shadow-xl active:translate-y-1 flex items-center gap-3"
-                onClick={() => window.open('https://wa.me/+9203432357017', '_blank')}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="w-17 h-17"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M12 2a10 10 0 0 0-8.464 15.51L2 22l4.49-1.535A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-6.829-12.2l.383-.6-.57-.822A8.003 8.003 0 1 1 20 12a8.001 8.001 0 0 1-8 8zm-1.07-5.646c1.225.746 2.163 1.16 2.834 1.24.56.067 1.007-.073 1.42-.414.302-.256.74-.805.916-1.108.169-.288.14-.518.01-.704-.104-.151-.24-.204-.394-.285-.154-.081-.985-.485-1.14-.544s-.265-.081-.375.082c-.112.163-.433.545-.53.662-.096.118-.194.133-.35.046-.292-.16-.961-.354-1.835-1.124-.68-.583-1.14-1.304-1.34-1.607-.09-.135-.009-.254.07-.34.073-.08.163-.186.244-.28.08-.094.107-.148.162-.24.056-.09.03-.165-.004-.232-.035-.066-.32-.77-.438-1.058-.114-.282-.228-.237-.316-.237-.086 0-.186-.012-.285-.007s-.267.038-.406.176c-.14.139-.55.536-.55 1.31 0 .773.562 1.52.64 1.63.079.11 1.104 1.71 2.678 2.605z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <span>Get a Free Website Audit Now.</span>
-              </Button> */}
-              <Button
-  size="lg"
-  variant="outline"
-  className="relative w-full sm:w-auto mt-4 sm:mt-0 text-lg sm:text-base py-6 sm:py-2 px-6 sm:px-8 text-black bg-[#00e650] border-none rounded-lg shadow-lg transition-all duration-300 ease-in-out hover:shadow-xl active:translate-y-1 flex items-center gap-2 sm:gap-3"
-  onClick={() => window.open('https://wa.me/+9203432357017', '_blank')}
->
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    className="w-6 h-6 sm:w-7 sm:h-7"
-  >
-    <path
-      fillRule="evenodd"
-      d="M12 2a10 10 0 0 0-8.464 15.51L2 22l4.49-1.535A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-6.829-12.2l.383-.6-.57-.822A8.003 8.003 0 1 1 20 12a8.001 8.001 0 0 1-8 8zm-1.07-5.646c1.225.746 2.163 1.16 2.834 1.24.56.067 1.007-.073 1.42-.414.302-.256.74-.805.916-1.108.169-.288.14-.518.01-.704-.104-.151-.24-.204-.394-.285-.154-.081-.985-.485-1.14-.544s-.265-.081-.375.082c-.112.163-.433.545-.53.662-.096.118-.194.133-.35.046-.292-.16-.961-.354-1.835-1.124-.68-.583-1.14-1.304-1.34-1.607-.09-.135-.009-.254.07-.34.073-.08.163-.186.244-.28.08-.094.107-.148.162-.24.056-.09.03-.165-.004-.232-.035-.066-.32-.77-.438-1.058-.114-.282-.228-.237-.316-.237-.086 0-.186-.012-.285-.007s-.267.038-.406.176c-.14.139-.55.536-.55 1.31 0 .773.562 1.52.64 1.63.079.11 1.104 1.71 2.678 2.605z"
-      clipRule="evenodd"
-    />
-  </svg>
-  <span className="text-base sm:text-lg">Get a Free Website Audit Now.</span>
-</Button>
-            </div>
-
-            <div className="relative mt-16 sm:mt-18">
-              <div className="absolute -right-2 sm:-right-8 -top-8 sm:top-0 flex items-center gap-4 sm:gap-2 bg-white p-4 sm:p-2 rounded-lg shadow-lg">
-                <div className="flex gap-2 sm:gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <Sparkles key={i} className="h-5 w-5 sm:h-3 sm:w-3 text-[#00ff59]" />
-                  ))}
-                </div>
-                <div className="text-lg sm:text-xs font-medium text-black">50+ Project</div>
-              </div>
-
-              <div className="w-[320px] h-[320px] sm:w-[200px] sm:h-[200px] md:w-[300px] md:h-[300px] mx-auto relative right-[-6px] top-[-12px]">
-                <Image
-                  src="/Assets/my.png"
-                  alt="Happy boy"
-                  fill
-                  className="rounded-full object-cover"
-                  priority
-                  sizes="(max-width: 640px) 320px, (max-width: 768px) 200px, 300px"
-                />
-              </div>
             </div>
           </div>
         </div>
       </main>
+
+      <div className="relative w-full mt-12 sm:mt-20 md:mt-24 lg:mt-18 z-30">
+        <div className="relative h-14 sm:h-14 md:h-16 lg:h-20 bg-[#39FF14] transform -skew-y-2 shadow-[0_0_30px_rgba(0,255,89,0.6)]" style={{ width: '100vw' }}>
+          <div className="flex items-center h-full animate-[marquee_25s_linear_infinite] skew-y-2">
+            <div className="flex items-center gap-8 sm:gap-8 md:gap-10 lg:gap-12 whitespace-nowrap px-6 sm:px-6 md:px-8">
+              {[...Array(20)].map((_, i) => (
+                <div key={i} className="flex items-center gap-8 sm:gap-8 md:gap-10 lg:gap-12">
+                  <span className="text-black font-black text-base sm:text-base md:text-lg lg:text-xl uppercase tracking-wider">More Clients</span>
+                  <div className="w-2.5 h-2.5 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 bg-black transform rotate-45"></div>
+                  <span className="text-black font-black text-base sm:text-base md:text-lg lg:text-xl uppercase tracking-wider">High-Quality Leads</span>
+                  <div className="w-2.5 h-2.5 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 bg-black transform rotate-45"></div>
+                  <span className="text-black font-black text-base sm:text-base md:text-lg lg:text-xl uppercase tracking-wider">Sales Growth</span>
+                  <div className="w-2.5 h-2.5 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 bg-black transform rotate-45"></div>
+                  <span className="text-black font-black text-base sm:text-base md:text-lg lg:text-xl uppercase tracking-wider">Revenue Boost</span>
+                  <div className="w-2.5 h-2.5 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 bg-black transform rotate-45"></div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+<div className="relative w-full h-72 sm:h-80 md:h-96 lg:h-[16rem] overflow-hidden mt-6 sm:mt-8 md:mt-12 mb-16 sm:mb-20 md:mb-24">
+  <div className="absolute bottom-0 left-0 w-full h-full pointer-events-none">
+    <svg className="absolute bottom-0 w-full h-full" viewBox="0 0 1400 400" preserveAspectRatio="xMidYMax slice">
+      <defs>
+        <linearGradient id="earthGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style={{ stopColor: '#39FF14', stopOpacity: 0 }} />
+          <stop offset="20%" style={{ stopColor: '#39FF14', stopOpacity: 0.5 }} />
+          <stop offset="50%" style={{ stopColor: '#39FF14', stopOpacity: 1 }} />
+          <stop offset="80%" style={{ stopColor: '#39FF14', stopOpacity: 0.5 }} />
+          <stop offset="100%" style={{ stopColor: '#39FF14', stopOpacity: 0 }} />
+        </linearGradient>
+        <filter id="earthGlow">
+          <feGaussianBlur stdDeviation="20" result="coloredBlur"/>
+          <feMerge>
+            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+      <path
+        d="M -200 400 Q 700 0 1600 400"
+        fill="none"
+        stroke="url(#earthGradient)"
+        strokeWidth="12"
+        filter=""
+      />
+    </svg>
+    <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[100%] sm:w-[85%] md:w-[80%] h-44 sm:h-52 md:h-64 bg-gradient-to-t from-[#39FF14]/25 via-[#39FF14]/15 to-transparent blur-3xl"></div>
+    <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[85%] sm:w-[70%] md:w-[60%] h-32 sm:h-40 md:h-48 bg-gradient-to-t from-[#39FF14]/35 via-[#39FF14]/20 to-transparent blur-2xl"></div>
+  </div>
+</div>
+
+
     </div>
   )
 }
-
-export { Hero }
