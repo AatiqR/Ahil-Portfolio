@@ -7,8 +7,8 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Ahil Website",
-  description: "Ahil Website Development Agency",
+  title: "Ahil- Agency",
+  description: "Ahil  Agency",
 };
 
 export default function RootLayout({
@@ -20,6 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         {children}
+  <SpeedInsights />
         <Script
           id="kommunicate-script"
           strategy="afterInteractive"
