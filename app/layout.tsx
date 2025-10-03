@@ -7,8 +7,11 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Ahil- Agency",
-  description: "Ahil  Agency",
+  title: "Ahil Agency – High-Converting Websites for Business Growth",
+  description: "Ahil Agency creates high-converting, SEO-optimized websites that drive leads, sales, and long-term growth. We help businesses, coaches, doctors, law firms & startups stand out online.",
+      icons: {
+    icon: "/Assets/LOGO.png", // path from public folder
+  },
 };
 
 export default function RootLayout({
