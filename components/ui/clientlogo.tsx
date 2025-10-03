@@ -54,15 +54,15 @@ const companies = [
 
 
   return (
-    <div className="w-full h-[300px] bg-black flex flex-col justify-center px-4 md:px-10 overflow-hidden rounded-3xl">
-      <div className="mb-6 text-center">
-        <h2 className="text-3xl md:text-5xl font-extrabold text-orange-500 mb-2 tracking-tight">
-          Our Clients
-        </h2>
-        <p className="text-sm md:text-base text-gray-300 font-medium">
-          Trusted by these companies and many more worldwide
-        </p>
-      </div>
+    <div className="w-full h-[200px] bg-black flex flex-col justify-center px-4 md:px-10 overflow-hidden ">
+  <div className="mb-6 text-center">
+    <h2 className="text-3xl md:text-5xl font-extrabold text-[#39FF14] mb-2 tracking-tight drop-shadow-[0_0_10px_#39FF14]">
+      Our Valued Clients
+    </h2>
+    <p className="text-sm md:text-base text-gray-300 font-semibold">
+      Proudly partnering with leading brands and innovators worldwide
+    </p>
+  </div>
 
       <div className="overflow-hidden">
         <motion.div

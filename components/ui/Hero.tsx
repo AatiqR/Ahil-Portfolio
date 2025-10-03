@@ -369,7 +369,7 @@ export default function Home() {
         </div>
       </div>
 
-<div className="relative w-full h-72 sm:h-80 md:h-96 lg:h-[16rem] overflow-hidden mt-6 sm:mt-8 md:mt-12 mb-16 sm:mb-20 md:mb-24">
+<div className="relative w-full h-72 sm:h-80 md:h-96 lg:h-[15rem] overflow-hidden mt-6 sm:mt-8 md:mt-12 mb-16 sm:mb-20 md:mb-24">
   <div className="absolute bottom-0 left-0 w-full h-full pointer-events-none">
     <svg className="absolute bottom-0 w-full h-full" viewBox="0 0 1400 400" preserveAspectRatio="xMidYMax slice">
       <defs>
@@ -397,8 +397,8 @@ export default function Home() {
         filter=""
       />
     </svg>
-    <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[100%] sm:w-[85%] md:w-[80%] h-44 sm:h-52 md:h-64 bg-gradient-to-t from-[#39FF14]/25 via-[#39FF14]/15 to-transparent blur-3xl"></div>
-    <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[85%] sm:w-[70%] md:w-[60%] h-32 sm:h-40 md:h-48 bg-gradient-to-t from-[#39FF14]/35 via-[#39FF14]/20 to-transparent blur-2xl"></div>
+    {/* <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[100%] sm:w-[85%] md:w-[80%] h-44 sm:h-52 md:h-64 bg-gradient-to-t from-[#39FF14]/25 via-[#39FF14]/15 to-transparent blur-3xl"></div>
+    <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[85%] sm:w-[70%] md:w-[60%] h-32 sm:h-40 md:h-48 bg-gradient-to-t from-[#39FF14]/35 via-[#39FF14]/20 to-transparent blur-2xl"></div> */}
   </div>
 </div>
 
