@@ -56,7 +56,7 @@ export default function Footer() {
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed">
               Strategically crafted websites with persuasive copy and seamless
-              development—designed to convert visitors into loyal customers.
+              development designed to convert visitors into loyal customers.
               Helping brands worldwide maximize growth, boost sales, and create
               lasting impact.
             </p>
@@ -64,8 +64,8 @@ export default function Footer() {
             {/* Achievements */}
             <div className="flex flex-col space-y-3 mb-6">
               {[
-                "50+ Projects Completed",
-                "100% Satisfaction Rate",
+                "100+ Projects Completed",
+                "99% Satisfaction Rate",
                 "100% Money-Back Guaranteed",
               ].map((text, idx) => (
                 <div
@@ -126,7 +126,7 @@ export default function Footer() {
             {/* Contact */}
             <div className="space-y-3 mt-5">
               <ContactInfo icon={Phone} text="+92 03432357017" />
-              <ContactInfo icon={Mail} text="ahilr9527@gmail.com" />
+              <ContactInfo icon={Mail} text="ahilranaconsulting@gmail.com" />
               <ContactInfo icon={MapPin} text="Karachi, Pakistan" />
             </div>
           </div>

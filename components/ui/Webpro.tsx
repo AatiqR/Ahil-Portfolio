@@ -114,7 +114,7 @@ export default function EcommerceLandingPage() {
     {/* Left side with mockup */}
     <div className="h-[220px] md:h-[380px] rounded-4xl overflow-hidden bg-transparent">
       <Image
-        src="/Assets/project/PTD Fitness.gif"
+        src="/Assets/project/ptd.gif"
         width={600}
         height={380}
         alt="PTD Fitness Case Study"
