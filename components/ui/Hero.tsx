@@ -253,58 +253,58 @@ export default function Home() {
         </div>
 
         {mobileMenuOpen && (
-          <div className="md:hidden fixed inset-0 top-20 left-0 right-0 bg-black/98 backdrop-blur-xl z-[100] animate-in fade-in slide-in-from-top-5 duration-300">
-            <div className="flex flex-col h-full px-6 py-8">
-              <button
-                className="absolute top-6 right-6 text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-                aria-label="Close menu"
-              >
-                <X className="h-6 w-6" />
-              </button>
+<div className="md:hidden fixed inset-0 top-0 left-0 right-0 z-[200] animate-in fade-in slide-in-from-top-5 duration-300">
+  {/* Deep frosted glass background */}
+  <div className="absolute inset-0 bg-white/5 backdrop-blur-3xl border border-white/20 shadow-2xl saturate-150" />
 
-              <div className="flex flex-col gap-8 mt-8">
-                <Link
-                  href="#Contact"
-                  className="text-white hover:text-[#00ff59] text-2xl font-bold transition-colors border-b border-white/10 pb-4"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Contact Us
-                </Link>
-                <Link
-                  href="#Service"
-                  className="text-white hover:text-[#00ff59] text-2xl font-bold transition-colors border-b border-white/10 pb-4"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Services
-                </Link>
-                <Link
-                  href="#Project"
-                  className="text-white hover:text-[#00ff59] text-2xl font-bold transition-colors border-b border-white/10 pb-4"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Projects
-                </Link>
-                <Link
-                  href="#Reviews"
-                  className="text-white hover:text-[#00ff59] text-2xl font-bold transition-colors border-b border-white/10 pb-4"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Reviews
-                </Link>
-              </div>
+  <div className="relative flex flex-col h-full px-8 py-10 z-10">
+    {/* Close Button */}
+    <button
+      className="absolute top-6 right-6 text-white/90 hover:text-[#39FF14] p-2 rounded-lg hover:bg-white/10 transition-all duration-300"
+      onClick={() => setMobileMenuOpen(false)}
+      aria-label="Close menu"
+    >
+      <X className="h-7 w-7" />
+    </button>
 
-              <div className="mt-auto pb-8">
-                <Button
-                  size="lg"
-                  className="bg-[#00ff59] text-black hover:bg-[#00dd4f] font-bold shadow-lg hover:shadow-[0_0_20px_rgba(0,255,89,0.5)] transition-all duration-300 w-full text-xl py-7"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Book a Call
-                </Button>
-              </div>
-            </div>
-          </div>
+    {/* Navigation Links */}
+    <div className="flex flex-col items-center justify-center gap-6 mt-16 text-center">
+      {[
+        { href: "#Project", label: "Projects" },
+        { href: "#Service", label: "Services" },
+        { href: "#Reviews", label: "Reviews" },
+        { href: "#Contact", label: "Contact Us" },
+      ].map((link, i) => (
+        <Link
+          key={i}
+          href={link.href}
+          className="relative text-white font-semibold text-[1.25rem] tracking-wide hover:text-[#39FF14] transition-all duration-300 pb-2 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[2px] after:bg-[#39FF14] hover:after:w-3/4 after:transition-all after:duration-300"
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          {link.label}
+        </Link>
+      ))}
+    </div>
+
+    {/* CTA Button */}
+    <div className="mt-auto pb-10 flex justify-center">
+      <Button
+        size="lg"
+        className="relative bg-[#39FF14] text-black font-extrabold rounded-2xl px-12 py-6 text-lg shadow-[0_0_30px_rgba(57,255,20,0.5)] hover:shadow-[0_0_45px_rgba(57,255,20,0.8)] hover:scale-[1.03] transition-all duration-300"
+        onClick={() => setMobileMenuOpen(false)}
+      >
+        Book a Call
+      </Button>
+    </div>
+
+    {/* Bottom Glow Line */}
+    <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-[#39FF14]/60 to-transparent blur-[4px]" />
+  </div>
+</div>
+
+
+
+      
         )}
       </nav>
 
