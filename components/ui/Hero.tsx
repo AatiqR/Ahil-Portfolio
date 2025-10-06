@@ -254,17 +254,17 @@ export default function Home() {
 
         {mobileMenuOpen && (
 <div className="md:hidden fixed inset-0 top-0 left-0 right-0 z-[200] animate-in fade-in slide-in-from-top-5 duration-300">
-  {/* Deep frosted glass background */}
-  <div className="absolute inset-0 bg-white/5 backdrop-blur-3xl border border-white/20 shadow-2xl saturate-150" />
+  {/* Frosted glass background like top navbar */}
+  <div className="absolute inset-0 bg-white/10 backdrop-blur-3xl border border-white/20 shadow-lg" />
 
   <div className="relative flex flex-col h-full px-8 py-10 z-10">
     {/* Close Button */}
     <button
-      className="absolute top-6 right-6 text-white/90 hover:text-[#39FF14] p-2 rounded-lg hover:bg-white/10 transition-all duration-300"
+      className="absolute top-3 right-6 text-white hover:text-[#39FF14] p-2 rounded-lg hover:bg-white/10 transition-all duration-300"
       onClick={() => setMobileMenuOpen(false)}
       aria-label="Close menu"
     >
-      <X className="h-7 w-7" />
+      <X className="h-6 w-6" />
     </button>
 
     {/* Navigation Links */}
@@ -287,21 +287,27 @@ export default function Home() {
     </div>
 
     {/* CTA Button */}
-    <div className="mt-auto pb-10 flex justify-center">
-      <Button
-        size="lg"
-        className="relative bg-[#39FF14] text-black font-extrabold rounded-2xl px-12 py-6 text-lg shadow-[0_0_30px_rgba(57,255,20,0.5)] hover:shadow-[0_0_45px_rgba(57,255,20,0.8)] hover:scale-[1.03] transition-all duration-300"
-        onClick={() => setMobileMenuOpen(false)}
-      >
-        Book a Call
-      </Button>
-    </div>
+<div className="mt-auto pb-10 flex justify-center">
+  <Button
+    size="lg"
+    className="relative bg-[#39FF14] text-black font-extrabold rounded-2xl px-12 py-6 text-lg shadow-[0_0_30px_rgba(57,255,20,0.5)] hover:shadow-[0_0_45px_rgba(57,255,20,0.8)] hover:scale-[1.03] transition-all duration-300"
+    onClick={() => {
+      setMobileMenuOpen(false);
+      const bookingSection = document.getElementById("booking");
+      if (bookingSection) {
+        bookingSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }}
+  >
+    Book a Call
+  </Button>
+</div>
+
 
     {/* Bottom Glow Line */}
     <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-[#39FF14]/60 to-transparent blur-[4px]" />
   </div>
 </div>
-
 
 
       
@@ -348,14 +354,21 @@ export default function Home() {
               Helping coaches, doctors, law firms, and startups grow with fast, modern SEO-ready websites.
             </p>
 
-            <div className="flex flex-col items-center justify-center pt-2 sm:pt-0 md:pt-0 relative z-10">
-              <Button
-                size="lg"
-                className="relative w-[90%] sm:w-auto text-lg sm:text-lg md:text-xl py-7 sm:py-7 md:py-8 px-10 sm:px-10 md:px-12 text-black bg-[#00ff59] border-none rounded-xl sm:rounded-lg shadow-lg hover:shadow-[0_0_30px_rgba(0,255,89,0.6)] transition-all duration-300 ease-in-out hover:bg-[#00dd4f] active:translate-y-1 font-bold"
-              >
-                Get a Free Consultation
-              </Button>
-            </div>
+         <div className="flex flex-col items-center justify-center pt-2 sm:pt-0 md:pt-0 relative z-10">
+  <Button
+    size="lg"
+    className="relative w-[90%] sm:w-auto text-lg sm:text-lg md:text-xl py-7 sm:py-7 md:py-8 px-10 sm:px-10 md:px-12 text-black bg-[#00ff59] border-none rounded-xl sm:rounded-lg shadow-lg hover:shadow-[0_0_30px_rgba(0,255,89,0.6)] transition-all duration-300 ease-in-out hover:bg-[#00dd4f] active:translate-y-1 font-bold"
+    onClick={() => {
+      const bookingSection = document.getElementById("booking");
+      if (bookingSection) {
+        bookingSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }}
+  >
+    Get a Free Consultation
+  </Button>
+</div>
+
           </div>
         </div>
       </main>
