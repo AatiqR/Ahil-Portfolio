@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Sparkles, Star, Menu, X } from "lucide-react"
+import { motion } from "framer-motion";
 import Link from "next/link"
 
 const FallingStars = () => {
@@ -140,6 +141,17 @@ const MouseFollower = () => {
   )
 }
 
+const avatars = [
+"/Assets/client/11.png",
+"/Assets/client/14.jpg",
+"/Assets/client/22.png",
+"/Assets/client/2.png",
+"/Assets/client/34.jpg",
+"/Assets/client/3.jpg",
+"/Assets/client/20.png",
+"/Assets/client/10.png",
+"/Assets/client/28.png",
+];
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const words = [
@@ -336,7 +348,7 @@ export default function Home() {
               Helping coaches, doctors, law firms, and startups grow with fast, modern SEO-ready websites.
             </p>
 
-            <div className="flex flex-col items-center justify-center pt-2 sm:pt-6 md:pt-8 relative z-10">
+            <div className="flex flex-col items-center justify-center pt-2 sm:pt-0 md:pt-0 relative z-10">
               <Button
                 size="lg"
                 className="relative w-[90%] sm:w-auto text-lg sm:text-lg md:text-xl py-7 sm:py-7 md:py-8 px-10 sm:px-10 md:px-12 text-black bg-[#00ff59] border-none rounded-xl sm:rounded-lg shadow-lg hover:shadow-[0_0_30px_rgba(0,255,89,0.6)] transition-all duration-300 ease-in-out hover:bg-[#00dd4f] active:translate-y-1 font-bold"
@@ -347,6 +359,70 @@ export default function Home() {
           </div>
         </div>
       </main>
+
+<motion.div
+  initial={{ y: 50, opacity: 0 }}
+  animate={{ y: 0, opacity: 1 }}
+  transition={{ duration: 0.8, delay: 0.2 }}
+  className="flex flex-col items-center mb-12 mt-7 text-center px-4 sm:px-6"
+>
+  {/* Avatars */}
+  <div className="flex -space-x-2 sm:-space-x-2 md:-space-x-3 mb-4">
+    {avatars.map((avatar, index) => (
+      <motion.div
+        key={index}
+        initial={{ scale: 0, rotate: -180 }}
+        animate={{ scale: 1, rotate: 0 }}
+        transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+        className="relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-full overflow-hidden 
+                   border border-[#39FF14]/80 shadow-[0_0_10px_rgba(57,255,20,0.4)] 
+                   hover:shadow-[0_0_20px_rgba(57,255,20,0.6)] transition-all duration-300 
+                   bg-black/20 backdrop-blur-sm"
+      >
+        <img
+          src={avatar}
+          alt={`Trusted user ${index + 1}`}
+          className="w-full h-full object-contain"
+        />
+      </motion.div>
+    ))}
+  </div>
+
+  {/* Stars & Text */}
+  <div className="flex flex-wrap justify-center items-center gap-2 text-center">
+    {[...Array(5)].map((_, i) => (
+      <motion.div
+        key={i}
+        initial={{ scale: 0, rotate: -180 }}
+        animate={{ scale: 1, rotate: 0 }}
+        transition={{ duration: 0.3, delay: 0.8 + i * 0.05 }}
+      >
+        <Star
+          size={18}
+          fill="#FFD700"
+          stroke="#FFD700"
+          className="drop-shadow-[0_0_6px_rgba(255,215,0,0.7)]"
+        />
+      </motion.div>
+    ))}
+
+    <span className="text-gray-300 text-sm sm:text-base font-semibold tracking-wide">
+      <span className="text-[#39FF14] font-extrabold">Trusted</span> by 100+ businesses, professionals & brands worldwide
+    </span>
+  </div>
+
+  {/* Tagline */}
+  <p className="mt-3 text-xs sm:text-sm md:text-base text-gray-400 font-medium max-w-xs sm:max-w-md">
+    Partnering with{" "}
+    <span className="text-[#39FF14] font-semibold">law firms</span>,{" "}
+    <span className="text-[#39FF14] font-semibold">medical experts</span>,{" "}
+    <span className="text-[#39FF14] font-semibold">businesses</span>,{" "}
+    <span className="text-[#39FF14] font-semibold">coaches</span>, and{" "}
+    <span className="text-[#39FF14] font-semibold">brands</span> to build{" "}
+    <span className="text-white font-semibold">high-performing websites</span> that attract clients, build trust & drive business growth 🚀
+  </p>
+</motion.div>
+
 
       <div className="relative w-full mt-12 sm:mt-20 md:mt-24 lg:mt-18 z-30">
         <div className="relative h-14 sm:h-14 md:h-16 lg:h-20 bg-[#39FF14] transform -skew-y-2 shadow-[0_0_30px_rgba(0,255,89,0.6)]" style={{ width: '100vw' }}>
@@ -368,6 +444,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+
 
 <div className="relative w-full h-72 sm:h-80 md:h-96 lg:h-[15rem] overflow-hidden mt-6 sm:mt-8 md:mt-12 mb-16 sm:mb-20 md:mb-24">
   <div className="absolute bottom-0 left-0 w-full h-full pointer-events-none">
