@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ahilwebstudio.vercel.app/sitemap.xml
