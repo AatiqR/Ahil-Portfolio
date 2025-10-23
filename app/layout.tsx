@@ -54,7 +54,10 @@ export const metadata: Metadata = {
     icon: "/Assets/LOGO.png",
   },
 };
-
+other: {
+    "google-site-verification": "DOuHYzCAHl3lOkz1Y8nLhneoLH53VIfCgZlOyLkUyX0",
+  },
+};
 export default function RootLayout({
   children,
 }: Readonly<{
