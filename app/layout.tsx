@@ -53,11 +53,12 @@ export const metadata: Metadata = {
   icons: {
     icon: "/Assets/LOGO.png",
   },
-};
-other: {
+  // ✅ Google Site Verification Tag Added
+  other: {
     "google-site-verification": "DOuHYzCAHl3lOkz1Y8nLhneoLH53VIfCgZlOyLkUyX0",
   },
 };
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -88,3 +89,4 @@ export default function RootLayout({
     </html>
   );
 }
+
