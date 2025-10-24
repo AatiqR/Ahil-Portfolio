@@ -1,33 +1,32 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastMod = new Date().toISOString();
+  const baseUrl = "https://ahilwebstudio.vercel.app";
 
   return [
     {
-      url: "https://ahilwebstudio.vercel.app/",
-      lastModified: lastMod,
+      url: `${baseUrl}/`,
+      lastModified: new Date().toISOString(),
       changeFrequency: "monthly",
       priority: 1.0,
     },
     {
-      url: "https://ahilwebstudio.vercel.app/services",
-      lastModified: lastMod,
+      url: `${baseUrl}/services`,
+      lastModified: new Date().toISOString(),
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
-      url: "https://ahilwebstudio.vercel.app/projects",
-      lastModified: lastMod,
+      url: `${baseUrl}/projects`,
+      lastModified: new Date().toISOString(),
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
-      url: "https://ahilwebstudio.vercel.app/contact",
-      lastModified: lastMod,
+      url: `${baseUrl}/contact`,
+      lastModified: new Date().toISOString(),
       changeFrequency: "monthly",
       priority: 0.8,
     },
   ];
 }
-
