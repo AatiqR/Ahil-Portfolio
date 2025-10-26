@@ -1,15 +1,17 @@
-import { MetadataRoute } from "next";
+// app/robots.ts
+import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
   const baseUrl = "https://ahilwebstudio.vercel.app";
 
   return {
-    rules: {
-      userAgent: "*",
-      allow: "/",
-      disallow: ["/private/"], // <-- directory ko clearly block karega
-    },
+    rules: [
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: '/private/',
+      },
+    ],
     sitemap: `${baseUrl}/sitemap.xml`,
-    host: baseUrl,
   };
 }
