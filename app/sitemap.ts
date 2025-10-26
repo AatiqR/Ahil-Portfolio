@@ -1,4 +1,5 @@
-import { MetadataRoute } from "next";
+// app/sitemap.ts
+import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://ahilwebstudio.vercel.app";
@@ -6,26 +7,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: `${baseUrl}/`,
-      lastModified: "2025-10-24",
-      changeFrequency: "monthly",
-      priority: 1.0,
+      lastModified: new Date().toISOString().split('T')[0],
+      changeFrequency: 'monthly',
+      priority: 1,
     },
     {
       url: `${baseUrl}/services`,
-      lastModified: "2025-10-24",
-      changeFrequency: "monthly",
+      lastModified: new Date().toISOString().split('T')[0],
+      changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/projects`,
-      lastModified: "2025-10-24",
-      changeFrequency: "monthly",
+      lastModified: new Date().toISOString().split('T')[0],
+      changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/contact`,
-      lastModified: "2025-10-24",
-      changeFrequency: "monthly",
+      lastModified: new Date().toISOString().split('T')[0],
+      changeFrequency: 'monthly',
       priority: 0.8,
     },
   ];
