@@ -36,7 +36,7 @@ export default function EcommerceLandingPage() {
       <p className="text md:text-xl text-gray-700 leading-relaxed">
         With branches across <span className="font-semibold">5 countries</span>, Padra is a global
         leader in hair transplant clinics. They approached us to modernize their digital
-        presence and build a platform that inspires trust while driving more patient bookings.
+        presence and build a platform that inspires trust while driving more patients bookings and get more leads .
       </p>
 
       {/* Case Study Sections */}
