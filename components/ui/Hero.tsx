@@ -155,19 +155,20 @@ const avatars = [
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const words = [
-    "SEO-Optimized",
-    "Sales-Boosting",
-    "High-Converting",
-    "Revenue-Generating",
-    "Lead-Driving",
-    "Profit-Boosting",
-    "Conversion-Focused",
-    "Business-Growing",
-    "Customer-Attracting",
-    "Results-Driven",
-    "Brand-Enhancing",
-    "Market-Dominating",
-    "Performance-Optimized"
+    "Lead Generating",
+    "Sales Boosting",
+    "SEO Optimized",
+    "High Converting",
+    "Revenue Generating",
+    "Lead Driving",
+    "Profit Boosting",
+    "Conversion Focused",
+    "Business Growing",
+    "Customer Attracting",
+    "Results Driven",
+    "Brand Enhancing",
+    "Market Dominating",
+    "Performance Optimized"
   ]
 
   const [index, setIndex] = useState(0)
