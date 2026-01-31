@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Ahil Web Studio | Full Stack Developer & Next.js Expert for Global Businesses",
   description:
-    "Ahil Web Studio builds fast, SEO-optimized, and high-converting websites using Next.js and React. Helping startups, agencies, and professionals grow their online presence worldwide.",
+    "Ahil Web Studio builds fast, SEO optimized, and high-converting websites using Next.js and React. Helping startups, agencies, and professionals grow their online presence worldwide.",
   keywords: [
     "Full Stack Developer",
     "Next.js Expert",

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { FaLinkedin, FaTwitter, FaFacebook, FaInstagram } from "react-icons/fa"
+import { FaLinkedin, FaTwitter, FaFacebook, FaInstagram, FaYoutube, FaTiktok} from "react-icons/fa"
 import type { IconType } from "react-icons"
 import { Mail, Phone, MapPin, ArrowRight, CheckCircle, ChevronRight, LucideIcon } from "lucide-react"
 
@@ -84,10 +84,12 @@ export default function Footer() {
 
             {/* Social Icons */}
             <div className="flex flex-wrap gap-3 mb-2">
-              <SocialIcon icon={FaLinkedin} name="LinkedIn" />
-              <SocialIcon icon={FaTwitter} name="Twitter" />
-              <SocialIcon icon={FaFacebook} name="Facebook" />
               <SocialIcon icon={FaInstagram} name="Instagram" />
+              <SocialIcon icon={FaTiktok} name="TikTok" />
+              <SocialIcon icon={FaFacebook} name="Facebook" />
+              <SocialIcon icon={FaTwitter} name="Twitter" />
+              <SocialIcon icon={FaLinkedin} name="LinkedIn" />
+              <SocialIcon icon={FaYoutube} name="Youtube" />
             </div>
           </div>
 
