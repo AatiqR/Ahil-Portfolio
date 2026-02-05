@@ -157,12 +157,12 @@ export default function Home() {
   const words = [
     "Lead Generating",
     "Sales Boosting",
-    "SEO Optimized",
+    "Conversion Focused",
     "High Converting",
     "Revenue Generating",
     "Lead Driving",
+    "SEO Optimized",
     "Profit Boosting",
-    "Conversion Focused",
     "Business Growing",
     "Customer Attracting",
     "Results Driven",
@@ -351,8 +351,9 @@ export default function Home() {
               Websites That Drive Business Growth.
             </h1>
 
-            <p className="text-gray-400 text-base sm:text-lg md:text-xl lg:text-2xl max-w-[85%] sm:max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto relative z-10 font-medium leading-relaxed">
-              Helping coaches, doctors, law firms, and startups grow with fast, modern SEO-ready websites.
+            <p className="text-gray-200 text-base sm:text-lg md:text-xl lg:text-1xl max-w-[85%] sm:max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto relative z-10 font-medium leading-relaxed">
+              {/* Helping coaches, law firms, doctors, and startups grow with fast, modern SEO-ready websites. */}
+              Helping coaches, law firms or lawyers, doctors, Agency and Businesses consistently generate qualified leads and close more clients with fast, modern, SEO ready websites.
             </p>
 
          <div className="flex flex-col items-center justify-center pt-2 sm:pt-0 md:pt-0 relative z-10">
