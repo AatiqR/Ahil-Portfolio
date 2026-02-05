@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from "react"
 import { cn } from "@/lib/utils"
-import { motion } from "framer-motion"
+import { motion, Variants } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import Image from "next/image"
 
@@ -211,17 +211,28 @@ export default function WebsiteShowcaseSlider() {
   }, [handleKeyDown, handleTouchStart, handleTouchMove, handleTouchEnd])
 
   // Animation variants for text
-  const titleVariants = {
-    hidden: { opacity: 0, y: -20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
+  // const titleVariants = {
+  //   hidden: { opacity: 0, y: -20 },
+  //   visible: {
+  //     opacity: 1,
+  //     y: 0,
+  //     transition: {
+  //       duration: 0.6,
+  //       ease: "easeOut",
+  //     },
+  //   },
+  // }
+const titleVariants: Variants = {
+  hidden: { opacity: 0, y: -20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.16, 1, 0.3, 1], // ✅ proper easing (easeOut style)
     },
-  }
+  },
+}
 
   // Get current card dimensions
   const { width: cardWidth, height: cardHeight } = getCardDimensions()
