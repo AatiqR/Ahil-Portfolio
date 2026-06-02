@@ -59,9 +59,9 @@ export default function Navbar() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
-              className="bg-green-500 text-black font-medium px-5 py-2 rounded-full hover:bg-green-400 transition-colors duration-300 shadow-[0_0_10px_rgba(62,250,140,0.3)]"
+              className="bg-golden-500 text-black font-medium px-5 py-2 rounded-full hover:bg-green-400 transition-colors duration-300 shadow-[0_0_10px_rgba(62,250,140,0.3)]"
             >
-              Book a call
+              Book a cal
             </motion.button>
           </div>
 
@@ -103,7 +103,7 @@ export default function Navbar() {
                   className="bg-green-500 text-black font-medium px-5 py-2 rounded-full hover:bg-green-400 transition-colors duration-300 mt-2 shadow-[0_0_10px_rgba(62,250,140,0.3)]"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Book a call
+                  Book a cal
                 </motion.button>
               </nav>
             </div>

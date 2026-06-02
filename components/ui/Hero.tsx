@@ -1,10 +1,11 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, useCallback } from "react"
 import { Button } from "@/components/ui/button"
 import { Sparkles, Star, Menu, X } from "lucide-react"
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link"
+import Image from "next/image";
 
 const FallingStars = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -152,8 +153,30 @@ const avatars = [
 "/Assets/client/10.png",
 "/Assets/client/28.png",
 ];
+
+
+const navLinks = [
+  { href: "#Services", label: "Services" },
+  { href: "#Projects", label: "Projects" },
+  { href: "#Reviews", label: "Reviews" },
+  { href: "#Casestudy", label: "Case Studies" },
+  { href: "#Contact", label: "Contact" },
+];
+
 export default function Home() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // const [, setIndex] = useState(0);
+
+  const toggleMenu = useCallback(() => {
+    setIsMenuOpen((prev) => !prev);
+  }, []);
+
+
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? "hidden" : "unset";
+  }, [isMenuOpen]);
+ 
   const words = [
     "Lead Generating",
     "Sales Boosting",
@@ -180,140 +203,124 @@ export default function Home() {
     return () => clearInterval(interval)
   }, [words.length])
 
-  useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = 'unset'
-    }
-  }, [mobileMenuOpen])
+
 
   return (
     <div className="min-h-screen bg-black overflow-hidden">
       <FallingStars />
       <MouseFollower />
+      <nav className="fixed top-4 sm:top-5 left-1/2 -translate-x-1/2 z-50 w-[94%] sm:w-[90%] md:w-[82%] lg:w-[70%] xl:w-[64%] max-w-6xl">
+  <div className="bg-white border border-black/5 shadow-lg rounded-[24px] px-5 sm:px-6 py-3 sm:py-3.5 transition-all duration-300">
+    <div className="relative flex items-center justify-between">
 
-      <nav className="fixed top-4 sm:top-6 left-1/2 transform -translate-x-1/2 z-50 backdrop-blur-md bg-white/10 px-5 sm:px-6 py-3.5 sm:py-4 rounded-3xl w-[92%] sm:w-[85%] md:w-[75%] lg:w-[65%] max-w-5xl border-2 border-white/20 shadow-lg">
-        <div className="flex items-center justify-between">
-          <button
-            className="md:hidden text-white p-1.5 hover:bg-white/10 rounded-lg transition-colors"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            <Menu className="h-5 w-5" />
-          </button>
+      {/* Mobile Toggle */}
+      <motion.button
+        whileTap={{ scale: 0.95 }}
+        onClick={toggleMenu}
+        className="md:hidden p-2 rounded-xl hover:bg-black/5 transition-colors"
+        aria-label="Toggle menu"
+      >
+        <AnimatePresence mode="wait">
+          {isMenuOpen ? (
+            <motion.div
+              key="close"
+              initial={{ rotate: -90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: 90, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              <X className="h-6 w-6 text-black" />
+            </motion.div>
+          ) : (
+            <motion.div
+              key="menu"
+              initial={{ rotate: 90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: -90, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Menu className="h-6 w-6 text-black" />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.button>
 
-          <div className="hidden md:flex flex-1">
-            <div className="flex items-center gap-6 lg:gap-10">
-              <Link
-                href="#Contact"
-                className="text-white hover:text-[#00ff59] text-sm lg:text-base font-bold transition-colors whitespace-nowrap"
-              >
-                Contact Us
-              </Link>
-              <Link
-                href="#Service"
-                className="text-white hover:text-[#00ff59] text-sm lg:text-base font-bold transition-colors whitespace-nowrap"
-              >
-                Services
-              </Link>
-            </div>
-          </div>
-
-          <Link
-            href="#"
-            className="flex items-center gap-2 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
-          >
-            <Sparkles className="h-5 w-5 sm:h-6 sm:w-6 text-[#00ff59]" />
-            <span className="text-white font-extrabold text-lg sm:text-xl lg:text-2xl">AHIL</span>
-          </Link>
-
-          <div className="hidden md:flex flex-1 justify-end">
-            <div className="flex items-center gap-6 lg:gap-8">
-              <Link
-                href="#Project"
-                className="text-white hover:text-[#00ff59] text-sm lg:text-base font-bold transition-colors whitespace-nowrap"
-              >
-                Projects
-              </Link>
-              <Link
-                href="#Reviews"
-                className="text-white hover:text-[#00ff59] text-sm lg:text-base font-bold transition-colors whitespace-nowrap"
-              >
-                Reviews
-              </Link>
-              <Button
-                size="sm"
-                className="bg-[#00ff59] text-black hover:bg-[#00dd4f] font-bold shadow-lg hover:shadow-[0_0_20px_rgba(0,255,89,0.5)] transition-all duration-300 text-sm"
-              >
-                Book a Call
-              </Button>
-            </div>
-          </div>
-          <div className="w-8 md:hidden"></div>
-        </div>
-
-        {mobileMenuOpen && (
-<div className="md:hidden fixed inset-0 top-0 left-0 right-0 z-[200] animate-in fade-in slide-in-from-top-5 duration-300">
-  {/* Frosted glass background like top navbar */}
-  <div className="absolute inset-0 bg-white/10 backdrop-blur-3xl border border-white/20 shadow-lg" />
-
-  <div className="relative flex flex-col h-full px-8 py-10 z-10">
-    {/* Close Button */}
-    <button
-      className="absolute top-3 right-6 text-white hover:text-[#39FF14] p-2 rounded-lg hover:bg-white/10 transition-all duration-300"
-      onClick={() => setMobileMenuOpen(false)}
-      aria-label="Close menu"
-    >
-      <X className="h-6 w-6" />
-    </button>
-
-    {/* Navigation Links */}
-    <div className="flex flex-col items-center justify-center gap-6 mt-16 text-center">
-      {[
-        { href: "#Project", label: "Projects" },
-        { href: "#Service", label: "Services" },
-        { href: "#Reviews", label: "Reviews" },
-        { href: "#Contact", label: "Contact Us" },
-      ].map((link, i) => (
-        <Link
-          key={i}
-          href={link.href}
-          className="relative text-white font-semibold text-[1.25rem] tracking-wide hover:text-[#39FF14] transition-all duration-300 pb-2 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[2px] after:bg-[#39FF14] hover:after:w-3/4 after:transition-all after:duration-300"
-          onClick={() => setMobileMenuOpen(false)}
-        >
-          {link.label}
+      {/* Left Links */}
+      <div className="hidden md:flex flex-1 gap-10">
+        <Link href="#Services" className="font-bold text-black hover:text-[#39FF14] transition-colors">
+          Services
         </Link>
-      ))}
-    </div>
+        <Link href="#Projects" className="font-bold text-black hover:text-[#39FF14] transition-colors">
+          Projects
+        </Link>
+        <Link href="#Reviews" className="font-bold text-black hover:text-[#39FF14] transition-colors">
+          Reviews
+        </Link>
+      </div>
 
-    {/* CTA Button */}
-<div className="mt-auto pb-10 flex justify-center">
-  <Button
-    size="lg"
-    className="relative bg-[#39FF14] text-black font-extrabold rounded-2xl px-12 py-6 text-lg shadow-[0_0_30px_rgba(57,255,20,0.5)] hover:shadow-[0_0_45px_rgba(57,255,20,0.8)] hover:scale-[1.03] transition-all duration-300"
-    onClick={() => {
-      setMobileMenuOpen(false);
+      {/* Center Logo */}
+      <Link href="/" className="absolute left-1/2 -translate-x-1/2">
+        <Image src="/Assets/LOGO.png" alt="Logo" width={120} height={40} priority className="h-12 w-auto" />
+      </Link>
+
+      {/* Right Links */}
+      <div className="hidden md:flex flex-1 justify-end gap-10 items-center">
+        <Link href="#Casestudy" className="font-bold text-black hover:text-[#39FF14] transition-colors">
+          Case Study
+        </Link>
+        <Link href="#Contact" className="font-bold text-black hover:text-[#39FF14] transition-colors">
+          Contact
+        </Link>
+        <Button className="bg-[#39FF14] text-black font-extrabold px-6 sm:px-7 py-3 sm:py-4 rounded-2xl shadow-md  transition-all"
+            onClick={() => {
       const bookingSection = document.getElementById("booking");
       if (bookingSection) {
         bookingSection.scrollIntoView({ behavior: "smooth" });
       }
     }}
-  >
-    Book a Call
-  </Button>
-</div>
-
-
-    {/* Bottom Glow Line */}
-    <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-[#39FF14]/60 to-transparent blur-[4px]" />
+        >
+          Book a Call
+        </Button>
+      </div>
+    </div>
   </div>
-</div>
 
-
-      
-        )}
-      </nav>
+  {/* Mobile Menu */}
+  <AnimatePresence>
+    {isMenuOpen && (
+      <motion.div
+        initial={{ height: 0, opacity: 0 }}
+        animate={{ height: "auto", opacity: 1 }}
+        exit={{ height: 0, opacity: 0 }}
+        transition={{ duration: 0.25, ease: "easeInOut" }}
+        className="md:hidden mt-3 bg-white border border-black/5 shadow-lg rounded-3xl overflow-hidden"
+      >
+        <div className="px-6 py-5 space-y-4 text-center">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setIsMenuOpen(false)}
+              className="block text-black font-bold text-lg hover:text-[#39FF14] transition-colors"
+            >
+              {link.label}
+            </Link>
+          ))}
+          <Button className="w-full bg-[#39FF14] text-black font-extrabold px-8 py-4 rounded-2xl shadow-md transition-all"
+              onClick={() => {
+      const bookingSection = document.getElementById("booking");
+      if (bookingSection) {
+        bookingSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }}
+          >
+            Book a Call
+          </Button>
+        </div>
+      </motion.div>
+    )}
+  </AnimatePresence>
+</nav>
 
       <main className="pt-24 sm:pt-28 md:pt-32 lg:pt-36 px-5 sm:px-6 md:px-8">
         <div className="mx-auto max-w-7xl relative">
