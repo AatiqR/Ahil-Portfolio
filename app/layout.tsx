@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     images: ["https://ahilwebstudio.vercel.app/og-image.jpg"],
   },
   icons: {
-    icon: "/Assets/LOGO.png",
+    icon: "/Assets/Ahil.png",
   },
   // ✅ Google Site Verification Tag Added
   other: {

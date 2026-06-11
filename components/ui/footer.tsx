@@ -7,15 +7,19 @@ import type { IconType } from "react-icons"
 import { Mail, Phone, MapPin, ArrowRight, CheckCircle, ChevronRight, LucideIcon } from "lucide-react"
 
 
+
 type ContactInfoProps = {
   icon: LucideIcon
   text: string
 }
 
 interface SocialIconProps {
-  icon: IconType // handles react-icons (FaX) correctly
-  name?: string
+  icon: IconType;
+  name: string;
+  url: string;
 }
+
+
 
 export default function Footer() {
   const [isVisible, setIsVisible] = useState(false)
@@ -23,6 +27,16 @@ export default function Footer() {
   useEffect(() => {
     setIsVisible(true)
   }, [])
+
+    /* ✅ Social Links */
+  const socialLinks: SocialIconProps[] = [
+    { name: "Instagram", icon: FaInstagram, url: "https://instagram.com/" },
+    { name: "TikTok", icon: FaTiktok, url: "https://tiktok.com/@" },
+    { name: "Facebook", icon: FaFacebook, url: "https://facebook.com/" },
+    { name: "YouTube", icon: FaYoutube, url: "https://youtube.com/@" },
+    { name: "LinkedIn", icon: FaLinkedin, url: "https://www.linkedin.com/in/aatiq-rana-598698290/" },
+    // { name: "Twitter", icon: FaTwitter, url: "https://twitter.com/yourusername" },
+  ];
 
   return (
     <footer
@@ -83,13 +97,15 @@ export default function Footer() {
             </div>
 
             {/* Social Icons */}
-            <div className="flex flex-wrap gap-3 mb-2">
-              <SocialIcon icon={FaInstagram} name="Instagram" />
-              <SocialIcon icon={FaTiktok} name="TikTok" />
-              <SocialIcon icon={FaFacebook} name="Facebook" />
-              <SocialIcon icon={FaTwitter} name="Twitter" />
-              <SocialIcon icon={FaLinkedin} name="LinkedIn" />
-              <SocialIcon icon={FaYoutube} name="Youtube" />
+                 <div className="flex flex-wrap gap-3 mb-2">
+              {socialLinks.map((social) => (
+                <SocialIcon
+                  key={social.name}
+                  name={social.name}
+                  icon={social.icon}
+                  url={social.url}
+                />
+              ))}
             </div>
           </div>
 
@@ -121,7 +137,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="group flex items-center justify-between bg-[#39FF14] hover:bg-[#2cff0f] text-black font-semibold rounded-md px-5 py-3 transition-all duration-300 w-full mb-6 shadow-[0_0_20px_rgba(57,255,20,0.6)] hover:shadow-[0_0_25px_rgba(57,255,20,0.8)]"
             >
-              <span>Book a Free Consultation Call</span>
+              <span>Chat on Whatssap With Us</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
 
@@ -167,15 +183,23 @@ function FooterLink({ href, text }: { href: string; text: string }) {
   )
 }
 
-function SocialIcon({ icon: Icon, name = "Social Icon" }: SocialIconProps) {
+
+
+function SocialIcon({ icon: Icon, name, url }: SocialIconProps) {
   return (
-    <Link href="#" className="relative group" aria-label={name}>
+    <Link
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={name}
+      className="relative group"
+    >
       <div className="absolute inset-0 bg-[#39FF14] rounded-lg blur opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
-      <div className="relative w-10 h-10 rounded-full bg-black/40 border border-gray-800 group-hover:border-[#39FF14] flex items-center justify-center transition-all duration-300 shadow-lg transform group-hover:translate-y-[-2px]">
+      <div className="relative w-10 h-10 rounded-full bg-black/40 border border-gray-800 group-hover:border-[#39FF14] flex items-center justify-center transition-all duration-300 shadow-lg transform group-hover:-translate-y-1">
         <Icon className="w-6 h-6 text-gray-400 group-hover:text-[#39FF14] transition-colors duration-300" />
       </div>
     </Link>
-  )
+  );
 }
 
 function ContactInfo({ icon: Icon, text }: ContactInfoProps) {

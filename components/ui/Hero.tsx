@@ -260,7 +260,7 @@ export default function Home() {
 
       {/* Center Logo */}
       <Link href="/" className="absolute left-1/2 -translate-x-1/2">
-        <Image src="/Assets/LOGO.png" alt="Logo" width={120} height={40} priority className="h-12 w-auto" />
+        <Image src="/Assets/Ahil.png" alt="Logo" width={120} height={40} priority className="h-12 w-auto" />
       </Link>
 
       {/* Right Links */}
@@ -363,10 +363,15 @@ export default function Home() {
               Helping coaches, law firms or lawyers, doctors, Agency and Businesses consistently generate qualified leads and close more clients with fast, modern, SEO ready websites.
             </p>
 
-         <div className="flex flex-col items-center justify-center pt-2 sm:pt-0 md:pt-0 relative z-10">
+<div className="relative z-10 flex flex-col sm:flex-row items-center justify-center gap-4 w-full max-w-3xl mx-auto pt-2 sm:pt-0">
+  
   <Button
     size="lg"
-    className="relative w-[90%] sm:w-auto text-lg sm:text-lg md:text-xl py-7 sm:py-7 md:py-8 px-10 sm:px-10 md:px-12 text-black bg-[#00ff59] border-none rounded-xl sm:rounded-lg shadow-lg hover:shadow-[0_0_30px_rgba(0,255,89,0.6)] transition-all duration-300 ease-in-out hover:bg-[#00dd4f] active:translate-y-1 font-bold"
+    className="w-full sm:flex-1 min-h-[64px] text-lg md:text-xl px-8
+               text-black bg-[#39FF14] border-none rounded-xl
+               shadow-lg hover:shadow-[0_0_30px_rgba(0,255,89,0.6)]
+               transition-all duration-300 ease-in-out
+               hover:bg-[#00dd4f] active:translate-y-1 font-bold"
     onClick={() => {
       const bookingSection = document.getElementById("booking");
       if (bookingSection) {
@@ -376,6 +381,23 @@ export default function Home() {
   >
     Get a Free Consultation
   </Button>
+
+  <Button
+    onClick={() => {
+      window.open(
+        "https://wa.me/923432357017?text=Hi,%20I%20would%20like%20a%20talk%20",
+        "_blank"
+      );
+    }}
+    className="w-full sm:flex-1 min-h-[64px] text-lg md:text-xl px-8
+               text-black bg-[#39FF14] border-none rounded-xl
+               shadow-lg hover:shadow-[0_0_30px_rgba(255,162,0,0.6)]
+               transition-all duration-300 ease-in-out
+               hover:bg-[#00dd4f] active:translate-y-1 font-bold"
+  >
+    Talk on WhatsApp
+  </Button>
+
 </div>
 
           </div>
